@@ -96,7 +96,7 @@
         {
             "prev_ver": 536870916,
             "name": "Início",
-            "uuid": "8e8eb7a0-6127-4066-932b-b134c052b952",
+            "uuid": "00cd3bbf-671a-4800-840e-ce4d176fe2bc",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -105,7 +105,7 @@
                 "items": [
                     {
                         "name": "Overlay Início 3D",
-                        "source_uuid": "47e4bddf-bdde-48d8-8670-4408db3df4ab",
+                        "source_uuid": "a7f8c0e2-eea2-45a4-85ec-a6384b2b5e8f",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -160,7 +160,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -215,7 +215,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+                        "source_uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -293,7 +293,7 @@
         {
             "prev_ver": 536870916,
             "name": "Só Chat",
-            "uuid": "0b7fbe4b-011e-48cd-ac4f-920733960367",
+            "uuid": "88f61b64-c163-48b7-9230-fdbab633ffc0",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -357,7 +357,7 @@
                     },
                     {
                         "name": "Overlay Só Chat 3D",
-                        "source_uuid": "b9fb3af9-8135-4026-b372-dee5050632ca",
+                        "source_uuid": "6e3c4c37-55ec-4d84-898e-303786b0cacb",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -412,7 +412,7 @@
                     },
                     {
                         "name": "chat",
-                        "source_uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
+                        "source_uuid": "40bcde5f-c520-43af-bc39-0b61f4b7f664",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -467,7 +467,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -522,7 +522,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+                        "source_uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -600,7 +600,7 @@
         {
             "prev_ver": 536870916,
             "name": "Gameplay",
-            "uuid": "c4b8b526-8ba4-4772-9cdf-3c73fefbfb92",
+            "uuid": "1b7bb020-f027-4fb4-bf11-15b1e5fa7dcc",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -664,7 +664,7 @@
                     },
                     {
                         "name": "Captura de Jogo (GTA 6 / Fullscreen)",
-                        "source_uuid": "7dd2d569-758f-43fe-bd43-c398ab4f44f8",
+                        "source_uuid": "dc7f36c5-6532-46ea-81f7-3af31a3d67a6",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -774,7 +774,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
+                        "source_uuid": "49998446-2d34-468c-bbb9-d4352c921153",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -829,7 +829,7 @@
                     },
                     {
                         "name": "chat",
-                        "source_uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
+                        "source_uuid": "40bcde5f-c520-43af-bc39-0b61f4b7f664",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -884,7 +884,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -939,7 +939,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+                        "source_uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -994,7 +994,7 @@
                     },
                     {
                         "name": "Missão Concluída 3D (Ativar ao vencer)",
-                        "source_uuid": "5c3e3f23-6a86-4de6-8d51-eccbcb19b35f",
+                        "source_uuid": "1cc82eff-1a73-4ff2-b8e6-c48f940eefbc",
                         "visible": false,
                         "locked": false,
                         "rot": 0,
@@ -1072,7 +1072,7 @@
         {
             "prev_ver": 536870916,
             "name": "Pausa",
-            "uuid": "dbd313a7-eeaa-4a9e-9826-ea1bb1417056",
+            "uuid": "57ad5a3e-65a5-4454-b189-a642362e3ba6",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1081,7 +1081,7 @@
                 "items": [
                     {
                         "name": "Overlay Pausa 3D",
-                        "source_uuid": "77f609ad-7210-4751-9cbf-273c015c68c8",
+                        "source_uuid": "bad22067-26df-4987-a3b0-9578cfe761b7",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1136,7 +1136,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1191,7 +1191,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+                        "source_uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1269,7 +1269,7 @@
         {
             "prev_ver": 536870916,
             "name": "Fim",
-            "uuid": "a617bd2e-b4e4-4a31-abab-a145ef907349",
+            "uuid": "98a87669-e95b-489b-a401-6fe47aa4be71",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1278,7 +1278,7 @@
                 "items": [
                     {
                         "name": "Overlay Fim 3D",
-                        "source_uuid": "0cc92769-b95f-4057-ab26-206a9014099a",
+                        "source_uuid": "ea9a2280-be42-4d99-9322-51db161ce1f2",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1333,7 +1333,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1411,7 +1411,7 @@
         {
             "prev_ver": 536870916,
             "name": "Web Cam",
-            "uuid": "c6a8cd00-c71a-4889-9f70-3c3e8a3d6edb",
+            "uuid": "b63776cc-2585-4a70-95db-4039d96af2b1",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1475,7 +1475,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1530,7 +1530,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+                        "source_uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1608,7 +1608,7 @@
         {
             "prev_ver": 536870916,
             "name": "Desktop",
-            "uuid": "8b9c5ab4-7c51-4d3b-a614-f99289b1d24d",
+            "uuid": "e6bd2ea3-b8e8-4243-9356-9da80f1ccc39",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1727,7 +1727,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
+                        "source_uuid": "49998446-2d34-468c-bbb9-d4352c921153",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1782,7 +1782,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1860,7 +1860,7 @@
         {
             "prev_ver": 536870916,
             "name": "Vídeo",
-            "uuid": "2b3c4c30-8a2f-4a34-92aa-c78e2bf83829",
+            "uuid": "f435ae34-0c56-44c8-bd2a-2e123cba937d",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1979,7 +1979,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
+                        "source_uuid": "49998446-2d34-468c-bbb9-d4352c921153",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -2034,7 +2034,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+                        "source_uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -2166,7 +2166,7 @@
         {
             "prev_ver": 536870916,
             "name": "Captura de Jogo (GTA 6 / Fullscreen)",
-            "uuid": "7dd2d569-758f-43fe-bd43-c398ab4f44f8",
+            "uuid": "dc7f36c5-6532-46ea-81f7-3af31a3d67a6",
             "id": "game_capture",
             "versioned_id": "game_capture",
             "settings": {
@@ -2192,7 +2192,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Início 3D",
-            "uuid": "47e4bddf-bdde-48d8-8670-4408db3df4ab",
+            "uuid": "a7f8c0e2-eea2-45a4-85ec-a6384b2b5e8f",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2227,7 +2227,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Só Chat 3D",
-            "uuid": "b9fb3af9-8135-4026-b372-dee5050632ca",
+            "uuid": "6e3c4c37-55ec-4d84-898e-303786b0cacb",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2262,7 +2262,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Gameplay 3D",
-            "uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
+            "uuid": "49998446-2d34-468c-bbb9-d4352c921153",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2297,7 +2297,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Pausa 3D",
-            "uuid": "77f609ad-7210-4751-9cbf-273c015c68c8",
+            "uuid": "bad22067-26df-4987-a3b0-9578cfe761b7",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2332,7 +2332,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Fim 3D",
-            "uuid": "0cc92769-b95f-4057-ab26-206a9014099a",
+            "uuid": "ea9a2280-be42-4d99-9322-51db161ce1f2",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2367,12 +2367,12 @@
         {
             "prev_ver": 536870916,
             "name": "Missão Concluída 3D (Ativar ao vencer)",
-            "uuid": "5c3e3f23-6a86-4de6-8d51-eccbcb19b35f",
+            "uuid": "1cc82eff-1a73-4ff2-b8e6-c48f940eefbc",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "D:/organizador financeiro/gta6-3d-stream-package/scenes/05-mission-completed.html",
+                "local_file": "D:/organizador financeiro/gta6-3d-stream-package/cena-missao.html",
                 "width": 1920,
                 "height": 1080,
                 "fps": 60,
@@ -2402,7 +2402,7 @@
         {
             "prev_ver": 536870916,
             "name": "alerts",
-            "uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
+            "uuid": "3ad980fe-8212-471d-94d5-dee258c9b0b9",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2437,7 +2437,7 @@
         {
             "prev_ver": 536870916,
             "name": "livepix",
-            "uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
+            "uuid": "429112fc-4a16-498c-bc86-f396a9cd9143",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2473,12 +2473,12 @@
         {
             "prev_ver": 536870916,
             "name": "chat",
-            "uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
+            "uuid": "40bcde5f-c520-43af-bc39-0b61f4b7f664",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "D:/organizador financeiro/gta6-3d-stream-package/scenes/07-chat-widget.html",
+                "local_file": "D:/organizador financeiro/gta6-3d-stream-package/chat-widget.html",
                 "width": 476,
                 "height": 640,
                 "fps": 60,
@@ -2508,7 +2508,7 @@
         {
             "prev_ver": 536870916,
             "name": "Transição Stinger (@apenasojorge)",
-            "uuid": "0d679401-5aac-4f24-abdc-cefe4111e717",
+            "uuid": "e74a57ac-5929-4843-bf6f-55e912d68f4a",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {

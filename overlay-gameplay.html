@@ -183,6 +183,56 @@
       gap: 12px;
     }
 
+    /* Barra de Meta Ultra-Clean (Seguidores ou Subs) abaixo da barra @apenasojorge */
+    .goal-pill-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 424px;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 10px;
+      background: rgba(20, 11, 36, 0.84);
+      border: 1px solid rgba(255, 212, 121, 0.34);
+      box-shadow: 0 8px 22px rgba(10, 4, 22, 0.48);
+    }
+
+    .goal-pill-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sunset-gold);
+      white-space: nowrap;
+    }
+
+    .goal-pill-track {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .goal-pill-fill {
+      height: 100%;
+      width: 30%;
+      border-radius: inherit;
+      background: var(--grad-sunset-bar);
+      box-shadow: 0 0 12px rgba(255, 148, 102, 0.65);
+      transition: width 0.5s ease;
+    }
+
+    .goal-pill-count {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
     /* Guia opcional para alinhar alertas */
     .alerts-safe-guide {
       display: none;
@@ -244,6 +294,15 @@
           <div id="platformIcons" class="platforms-inline"></div>
         </div>
       </div>
+
+      <!-- Barra de Meta Clean (Seguidores / Subs — opcional via config.js ou ?meta=off) -->
+      <div id="goalPillBar" class="goal-pill-bar hidden">
+        <span id="goalPillLabel" class="goal-pill-label">META SEGUIDORES</span>
+        <div class="goal-pill-track">
+          <div id="goalPillFill" class="goal-pill-fill"></div>
+        </div>
+        <span id="goalPillCount" class="goal-pill-count">15/50</span>
+      </div>
     </section>
   </main>
 
@@ -289,7 +348,7 @@
       const identityBar = document.getElementById("identityBar");
       const coordsHint = document.getElementById("camCoordsHint");
 
-      const frameStyleParam = helpers.getUrlParam("frame") || cfg.webcamFrameStyle || "cam2";
+      const frameStyleParam = helpers.getUrlParam("frame") || cfg.webcamFrameStyle || "cam3";
       const skinMap = {
         cam1: "assets/cam-frame-1.png",
         cam2: "assets/cam-frame-2.png",
@@ -301,6 +360,18 @@
         webcamFrame.classList.add("has-png-skin");
       } else {
         webcamFrame.classList.remove("has-png-skin");
+      }
+
+      // Barra de Meta Clean (Seguidores ou Subs) — pode desligar via ?meta=off ou config.js
+      const goalBar = document.getElementById("goalPillBar");
+      const metaParam = helpers.getUrlParam("meta") || (cfg.metaAtiva ? (cfg.tipoMeta || "seguidores") : "off");
+      if (goalBar && metaParam !== "off" && metaParam !== "0" && metaParam !== "false") {
+        const cur = Number(helpers.getUrlParam("atual") ?? cfg.metaAtual ?? 15);
+        const tot = Math.max(1, Number(helpers.getUrlParam("total") ?? cfg.metaTotal ?? 50));
+        document.getElementById("goalPillLabel").textContent = metaParam === "subs" ? "META SUBS" : "META SEGUIDORES";
+        document.getElementById("goalPillCount").textContent = `${cur}/${tot}`;
+        document.getElementById("goalPillFill").style.width = `${Math.min(100, Math.round((cur / tot) * 100))}%`;
+        goalBar.classList.remove("hidden");
       }
 
       const coordsMap = {

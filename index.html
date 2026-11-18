@@ -2,295 +2,383 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>GTA 6 Full 3D Stream Package — Central de Controle & Modo Streamer (PT-BR / EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estúdio de Preview 3D — Overlays & Alertas (@apenasojorge)</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap');
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #0d0918;
-      color: #f5eefc;
-      font-family: 'Rajdhani', sans-serif;
       min-height: 100vh;
+      background: #0d0718;
+      color: #f6effa;
+      font-family: 'Inter', system-ui, sans-serif;
       display: flex;
       flex-direction: column;
-    }
-
-    header {
-      padding: 14px 32px;
-      background: linear-gradient(90deg, #1b1130 0%, #2a133d 50%, #152338 100%);
-      border-bottom: 2px solid rgba(255, 110, 215, 0.35);
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
+      padding: 16px 20px 24px;
       gap: 14px;
     }
 
-    .brand h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: 26px;
-      letter-spacing: 1.5px;
-      background: linear-gradient(90deg, #ff7dd8, #ffc266);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-    }
-
-    .badge {
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: rgba(255, 95, 210, 0.2);
-      border: 1px solid #ff6ed4;
-      font-size: 13px;
-      font-weight: 700;
-      color: #ffb8ec;
-    }
-
-    .controls-bar {
+    .toolbar {
+      width: 100%;
+      max-width: 1320px;
+      background: rgba(25, 14, 46, 0.92);
+      border: 1px solid rgba(255, 250, 244, 0.2);
+      border-radius: 14px;
+      padding: 12px 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      padding: 12px 32px;
-      background: #140e24;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .toolbar {
+    .toolbar-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .alerts-deck {
-      display: flex;
       align-items: center;
-      flex-wrap: wrap;
       gap: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .deck-label {
-      font-weight: 700;
-      font-size: 14px;
-      color: #ffb8ec;
-      margin-right: 4px;
+    .toolbar-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      color: #ffd479;
+      margin-right: 6px;
     }
 
-    .tab-btn {
-      padding: 7px 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(205, 120, 255, 0.35);
-      background: #1f1636;
-      color: #e8daf6;
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn:hover, .tab-btn.active {
-      background: linear-gradient(135deg, #c842b8 0%, #8635d8 100%);
-      border-color: #ff9de6;
-      color: #ffffff;
-      box-shadow: 0 0 16px rgba(212, 82, 255, 0.55);
-    }
-
-    .alert-btn {
-      padding: 6px 13px;
+    .btn {
+      padding: 7px 13px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 190, 100, 0.45);
-      background: linear-gradient(135deg, #321b4f 0%, #4d2163 100%);
-      color: #ffe6c2;
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .alert-btn:hover {
-      background: linear-gradient(135deg, #ff7b54 0%, #d4388d 100%);
-      border-color: #ffe299;
+      border: 1px solid rgba(255, 250, 244, 0.2);
+      background: rgba(255, 255, 255, 0.06);
       color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(255, 110, 180, 0.45);
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .action-btn {
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: 1px solid #ffb86c;
-      background: linear-gradient(135deg, #ff7b54, #d4388d);
-      color: #fff;
-      font-weight: 700;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
-    .preview-stage {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(168, 62, 215, 0.14) 0%, transparent 65%),
-        repeating-conic-gradient(#140f24 0% 25%, #19132c 0% 50%) 50% / 32px 32px;
+    .btn:hover {
+      background: rgba(255, 148, 102, 0.22);
+      border-color: rgba(255, 212, 121, 0.6);
     }
 
-    .iframe-container {
-      width: 1280px;
-      height: 720px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 2px solid rgba(255, 130, 220, 0.5);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
+    .btn.active {
+      background: linear-gradient(135deg, #ff7b72, #ffd479);
+      color: #160928;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-alert {
+      border-color: rgba(79, 227, 154, 0.4);
+    }
+
+    select {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 250, 244, 0.25);
+      background: #170c2b;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Palco escalado 1920x1080 */
+    .stage-shell {
       position: relative;
-      background: #0e0a1a;
+      width: 100%;
+      max-width: 1320px;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 250, 244, 0.28);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+      background: #140b24;
     }
 
-    iframe {
+    .canvas-1920 {
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 1920px;
       height: 1080px;
-      border: none;
-      transform: scale(0.6666667);
       transform-origin: top left;
     }
 
-    .info-bar {
-      margin-top: 12px;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      font-size: 15px;
-      color: #cbb8e2;
+    /* Fundo simulado de jogo apenas para visualizar o overlay-gameplay.html transparente */
+    .mock-game-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, #3c265e 0%, #9b4f6e 45%, #e68a63 68%, #262338 69%, #191826 100%);
+      display: none;
     }
 
-    code {
-      background: #23183c;
-      padding: 4px 10px;
-      border-radius: 6px;
-      color: #ff99e2;
-      border: 1px solid rgba(255, 140, 225, 0.25);
+    .mock-game-bg.visible {
+      display: block;
+    }
+
+    .mock-minimap {
+      position: absolute;
+      left: 36px;
+      bottom: 36px;
+      width: 280px;
+      height: 175px;
+      border-radius: 10px;
+      background: rgba(16, 22, 32, 0.85);
+      border: 3px solid rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .mock-hud-topright {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(16, 22, 32, 0.68);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #9be89d;
+    }
+
+    .mock-hud-topleft {
+      position: absolute;
+      left: 36px;
+      top: 40px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: rgba(16, 22, 32, 0.68);
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    iframe.scene-frame {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      border: none;
+      background: transparent;
+    }
+
+    iframe.alert-overlay-frame {
+      position: absolute;
+      left: 550px;
+      top: 20px;
+      width: 820px;
+      height: 270px;
+      border: none;
+      background: transparent;
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    iframe.transition-overlay-frame {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      border: none;
+      background: transparent;
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    .hint-bar {
+      font-size: 13px;
+      color: #cbbad1;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <h1>GTA 6 PACOTE STREAM 3D • @APENASOJORGE</h1>
-      <span class="badge">Twitch: apenasojorge • Todos os 6 Alertas 3D + Meta de Seguidores & Subs</span>
+  <header class="toolbar">
+    <div class="toolbar-row">
+      <span class="toolbar-label">Cenas:</span>
+      <button class="btn active" data-scene="overlay-gameplay.html">Gameplay (Transparente)</button>
+      <button class="btn" data-scene="cena-inicio.html">Início</button>
+      <button class="btn" data-scene="cena-chat.html">Só Chat</button>
+      <button class="btn" data-scene="cena-pausa.html">Pausa</button>
+      <button class="btn" data-scene="cena-fim.html">Fim</button>
+      <button class="btn" data-scene="cena-missao.html">Missão Concluída 3D</button>
+
+      <span class="toolbar-label" style="margin-left: 14px;">Webcam:</span>
+      <select id="camSelect">
+        <option value="">Padrão do config.js (middle-left)</option>
+        <option value="middle-left">Meio-Esquerda (acima do mapa)</option>
+        <option value="top-left">Topo-Esquerda</option>
+        <option value="bottom-left">Inferior-Esquerda</option>
+        <option value="top-right">Topo-Direita</option>
+        <option value="middle-right">Meio-Direita</option>
+        <option value="bottom-right">Inferior-Direita</option>
+        <option value="off">Ocultar Webcam (off)</option>
+      </select>
+
+      <span class="toolbar-label" style="margin-left: 10px;">Moldura:</span>
+      <select id="frameSelect">
+        <option value="cam3">Cam 3 (Jacaré de Óculos + Sol)</option>
+        <option value="cam2">Cam 2 (GTA VI Logo + Palmeiras)</option>
+        <option value="cam1">Cam 1 (Vice City Neon + Palmeiras)</option>
+        <option value="cam4">Cam 4 (Vice City Leonida)</option>
+        <option value="sunset">Minimalista Sunset Dourada</option>
+      </select>
+
+      <span class="toolbar-label" style="margin-left: 10px;">Meta:</span>
+      <select id="metaSelect">
+        <option value="seguidores">Meta Seguidores (Iniciante)</option>
+        <option value="subs">Meta Subs (Afiliado)</option>
+        <option value="off">Sem Barra de Meta</option>
+      </select>
+
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-left:8px;cursor:pointer;">
+        <input type="checkbox" id="guidesToggle" />
+        Mostrar Guias OBS
+      </label>
+
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-left:8px;cursor:pointer;">
+        <input type="checkbox" id="transitionToggle" checked />
+        Transição ao trocar cena
+      </label>
+
+      <button class="btn" id="testTransitionBtn" type="button" style="margin-left:auto;">Testar Transição</button>
     </div>
-    <div class="lang-toggle">
-      <span>Idioma:</span>
-      <button id="lang-pt" class="tab-btn active" onclick="setLanguage('pt')">🇧🇷 Português (PT-BR)</button>
-      <button id="lang-en" class="tab-btn" onclick="setLanguage('en')">🇺🇸 Original (EN)</button>
-      <button class="action-btn" onclick="copyCurrentUrl()">📋 Copiar Link pro OBS</button>
+
+    <div class="toolbar-row">
+      <span class="toolbar-label">Testar Alertas (com música):</span>
+      <button class="btn btn-alert" data-alert="tip" data-amount="10">Donate R$ 10 (Notas)</button>
+      <button class="btn btn-alert" data-alert="tip" data-amount="30">Donate R$ 30 (Maço)</button>
+      <button class="btn btn-alert" data-alert="tip" data-amount="60">Donate R$ 60 (Maleta)</button>
+      <button class="btn btn-alert" data-alert="tip" data-amount="150">Donate R$ 150 (Cofre)</button>
+      <button class="btn btn-alert" data-alert="sub">Sub (Passe VIP)</button>
+      <button class="btn btn-alert" data-alert="gift">Gift Sub (Drop)</button>
+      <button class="btn btn-alert" data-alert="follow">Follow (Check-in 1★)</button>
+      <button class="btn btn-alert" data-alert="cheer">Bits (Poker)</button>
+      <button class="btn btn-alert" data-alert="raid">Raid (Polícia 6★)</button>
+      <button class="btn btn-alert" data-alert="livepix">LivePix (Maleta)</button>
     </div>
   </header>
 
-  <div class="controls-bar">
-    <div class="toolbar">
-      <button class="tab-btn active" onclick="selectScene('scenes/01-starting-soon.html?minutes=5', this)">1. Começando (5m)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/01-starting-soon.html?minutes=10', this)">1B. Começando (10m)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/02-be-right-back.html', this)">2. Já Volto / BRB (3D)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/03-ending-soon.html', this)">3. Encerrando (3D)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/04-intermission.html', this)">4. Intervalo / Gameplay + Cam + Chat</button>
-      <button class="tab-btn" onclick="selectScene('scenes/05-mission-completed.html', this)">5. Missão Concluída (Tela Cheia Alpha)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/06-facecam-alerts-widget.html?mode=followgoal&goal=follows&subs=50/100', this)">6A. Facecam + Meta Seguidores (Iniciante)</button>
-      <button class="tab-btn" onclick="selectScene('scenes/06-facecam-alerts-widget.html?mode=subgoal&goal=subs&subs=50/100', this)">6B. Facecam + Meta de Subs</button>
-      <button class="tab-btn" onclick="selectScene('scenes/07-chat-widget.html', this)">7. Chat Widget Animado</button>
-      <button class="tab-btn" onclick="selectScene('scenes/08-gameplay-live-hud.html?transparent=0&goal=follows', this)">8. HUD Completa de Live</button>
-    </div>
+  <section id="stageShell" class="stage-shell">
+    <div id="canvas1920" class="canvas-1920">
+      <!-- Fundo simulado só para visualizar onde fica o minimapa no gameplay -->
+      <div id="mockGameBg" class="mock-game-bg visible">
+        <div class="mock-hud-topleft">Notificações / Dicas do jogo</div>
+        <div class="mock-hud-topright">$ 248.500</div>
+        <div class="mock-minimap">MINIMAPA DO JOGO</div>
+      </div>
 
-    <!-- Live 3D Alert Testing Deck -->
-    <div class="alerts-deck">
-      <span class="deck-label">🔔 Testar Alertas 3D ao Vivo na Facecam:</span>
-      <button class="alert-btn" onclick="testAlert('follow')">👤 Novo Seguidor (Follow)</button>
-      <button class="alert-btn" onclick="testAlert('sub')">⭐ Novo Inscrito (Sub)</button>
-      <button class="alert-btn" onclick="testAlert('subgift')">🎁 Presente de Sub (Sub Gift)</button>
-      <button class="alert-btn" onclick="testAlert('donate')">💲 Doação PIX / Donate (R$ 100)</button>
-      <button class="alert-btn" onclick="testAlert('bits')">💎 Bits / Cheers (1.000 Bits)</button>
-      <button class="alert-btn" onclick="testAlert('raid')">⚡ Alerta de Raid (250 Viewers)</button>
+      <iframe id="sceneFrame" class="scene-frame" src="overlay-gameplay.html" allowtransparency="true"></iframe>
+      <iframe id="alertFrame" class="alert-overlay-frame" src="preview-alertas.html?v=8" allowtransparency="true"></iframe>
+      <iframe id="transitionFrame" class="transition-overlay-frame" src="transicao.html?manual=1" allowtransparency="true"></iframe>
     </div>
-  </div>
+  </section>
 
-  <div class="preview-stage">
-    <div class="iframe-container">
-      <iframe id="scene-frame" src="scenes/01-starting-soon.html?minutes=5&lang=pt"></iframe>
-    </div>
-    <div class="info-bar">
-      <span>URL Ativa no OBS: <code id="scene-url">scenes/01-starting-soon.html?minutes=5&lang=pt</code></span>
-      <span>Resolução Nativa: <code>1920x1080 (Full HD 60 FPS)</code></span>
-    </div>
-  </div>
+  <p class="hint-bar">
+    Dica: clique em qualquer botão de alerta acima para ouvir a musiquinha ambiente e testar o visual sobre a cena sem precisar abrir o OBS.
+  </p>
 
   <script>
-    let currentBaseScene = 'scenes/01-starting-soon.html?minutes=5';
-    let currentLang = 'pt';
+    const stageShell = document.getElementById("stageShell");
+    const canvas1920 = document.getElementById("canvas1920");
+    const sceneFrame = document.getElementById("sceneFrame");
+    const alertFrame = document.getElementById("alertFrame");
+    const transitionFrame = document.getElementById("transitionFrame");
+    const mockGameBg = document.getElementById("mockGameBg");
+    const camSelect = document.getElementById("camSelect");
+    const frameSelect = document.getElementById("frameSelect");
+    const metaSelect = document.getElementById("metaSelect");
+    const guidesToggle = document.getElementById("guidesToggle");
+    const transitionToggle = document.getElementById("transitionToggle");
+    const testTransitionBtn = document.getElementById("testTransitionBtn");
 
-    function updateIframe() {
-      const sep = currentBaseScene.includes('?') ? '&' : '?';
-      const fullUrl = `${currentBaseScene}${sep}lang=${currentLang}`;
-      document.getElementById('scene-frame').src = fullUrl;
-      document.getElementById('scene-url').textContent = fullUrl;
+    let currentScene = "overlay-gameplay.html";
+    let pendingSceneReload = false;
+
+    function fitCanvas() {
+      const scale = stageShell.clientWidth / 1920;
+      canvas1920.style.transform = `scale(${scale})`;
+    }
+    window.addEventListener("resize", fitCanvas);
+    fitCanvas();
+
+    function reloadScene() {
+      const params = new URLSearchParams();
+      if (camSelect.value) params.set("cam", camSelect.value);
+      if (frameSelect && frameSelect.value) params.set("frame", frameSelect.value);
+      if (metaSelect && metaSelect.value) params.set("meta", metaSelect.value);
+      if (guidesToggle.checked) params.set("guias", "1");
+      const qs = params.toString();
+      sceneFrame.src = qs ? `${currentScene}?${qs}` : currentScene;
+      mockGameBg.classList.toggle("visible", currentScene === "overlay-gameplay.html");
     }
 
-    function selectScene(url, btn) {
-      document.querySelectorAll('.toolbar .tab-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      currentBaseScene = url;
-      updateIframe();
-    }
-
-    function testAlert(alertType) {
-      // If user is not currently on Facecam or HUD scene, switch to Facecam + Alerts automatically
-      if (!currentBaseScene.includes('06-facecam') && !currentBaseScene.includes('08-gameplay')) {
-        currentBaseScene = `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}`;
-        document.querySelectorAll('.toolbar .tab-btn').forEach(b => b.classList.remove('active'));
-        updateIframe();
-        return;
+    function triggerTransition(swapScene) {
+      pendingSceneReload = Boolean(swapScene);
+      if (transitionFrame.contentWindow) {
+        transitionFrame.contentWindow.postMessage({ playTransition: true }, "*");
+      } else if (pendingSceneReload) {
+        pendingSceneReload = false;
+        reloadScene();
       }
-      // Send live postMessage to trigger the 3D alert inside the running Facecam/HUD
-      const frame = document.getElementById('scene-frame');
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage({ type: 'TRIGGER_ALERT', alertType }, '*');
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data && event.data.transitionMidpoint && pendingSceneReload) {
+        pendingSceneReload = false;
+        reloadScene();
       }
-      const sep = currentBaseScene.includes('?') ? '&' : '?';
-      document.getElementById('scene-url').textContent =
-        `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&lang=${currentLang}`;
-    }
+    });
 
-    function setLanguage(lang) {
-      currentLang = lang;
-      document.getElementById('lang-pt').classList.toggle('active', lang === 'pt');
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      updateIframe();
-    }
+    document.querySelectorAll("[data-scene]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const nextScene = btn.getAttribute("data-scene");
+        document.querySelectorAll("[data-scene]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        if (nextScene === currentScene) return;
+        currentScene = nextScene;
+        if (transitionToggle.checked) {
+          triggerTransition(true);
+        } else {
+          reloadScene();
+        }
+      });
+    });
 
-    function copyCurrentUrl() {
-      const rel = document.getElementById('scene-url').textContent;
-      const abs = new URL(rel, window.location.href).href;
-      navigator.clipboard.writeText(abs);
-      alert('Link copiado para colar no OBS Browser Source:\n' + abs);
-    }
+    testTransitionBtn.addEventListener("click", () => {
+      triggerTransition(false);
+    });
+
+    camSelect.addEventListener("change", reloadScene);
+    if (frameSelect) frameSelect.addEventListener("change", reloadScene);
+    if (metaSelect) metaSelect.addEventListener("change", reloadScene);
+    guidesToggle.addEventListener("change", reloadScene);
+
+    document.querySelectorAll("[data-alert]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const type = btn.getAttribute("data-alert");
+        const amountAttr = btn.getAttribute("data-amount");
+        const amount = amountAttr ? Number(amountAttr) : undefined;
+        if (alertFrame.contentWindow) {
+          alertFrame.contentWindow.postMessage({ triggerAlert: type, amount }, "*");
+        }
+      });
+    });
   </script>
 </body>
 </html>

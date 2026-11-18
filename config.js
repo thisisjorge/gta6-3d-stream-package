@@ -18,13 +18,20 @@ window.STREAM_CONFIG = {
   ativarEfeitos3D: true, // Ativa algemas 3D, Glock 3D, maços de dólar $100 3D e estrelas 3D
 
   // Estilo da Moldura da Webcam no overlay-gameplay.html:
-  // "cam2" (Padrão: Moldura GTA VI Logo + Palmeiras Neon da sua pasta Downloads!)
+  // "cam3" (Padrão: Moldura Jacaré de Óculos com Drink + Sol de Óculos!)
+  // "cam2" (Moldura GTA VI Logo + Palmeiras Neon)
   // "cam1" (Moldura Vice City Neon Script + Palmeiras)
-  // "cam3" (Moldura Jacaré de Óculos com Drink + Sol de Óculos)
   // "cam4" (Moldura Vice City Leonida)
   // "sunset" (Moldura minimalista Sunset Dourada)
-  // Dica: também pode trocar via URL no OBS: overlay-gameplay.html?frame=cam3
-  webcamFrameStyle: "cam2",
+  // Dica: também pode trocar via URL no OBS: overlay-gameplay.html?frame=cam2
+  webcamFrameStyle: "cam3",
+
+  // Barra de Meta opcional abaixo da barra @apenasojorge (ideal para iniciante na Twitch!)
+  // tipoMeta: "seguidores" | "subs" | "off"
+  metaAtiva: true,
+  tipoMeta: "seguidores",
+  metaAtual: 15,
+  metaTotal: 50,
 
   // Posição da moldura 16:9 (424x242) no overlay-gameplay.html:
   // "middle-left" (padrão — acima do minimapa do GTA, sem tampar HUD inferior/superior)

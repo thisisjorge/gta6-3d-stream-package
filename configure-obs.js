@@ -203,7 +203,7 @@ const bsChat     = makeBrowserSource('Overlay Só Chat 3D', `${ROOT}/cena-chat.h
 const bsGameplay = makeBrowserSource('Overlay Gameplay 3D', `${ROOT}/overlay-gameplay.html`, 1920, 1080, true);
 const bsPausa    = makeBrowserSource('Overlay Pausa 3D', `${ROOT}/cena-pausa.html`, 1920, 1080, true);
 const bsFim      = makeBrowserSource('Overlay Fim 3D', `${ROOT}/cena-fim.html`, 1920, 1080, true);
-const bsMissao   = makeBrowserSource('Missão Concluída 3D (Ativar ao vencer)', `${ROOT}/scenes/05-mission-completed.html`, 1920, 1080, true);
+const bsMissao   = makeBrowserSource('Missão Concluída 3D (Ativar ao vencer)', `${ROOT}/cena-missao.html`, 1920, 1080, true);
 
 // Read custom LivePix CSS so OBS Browser Source automatically styles the live widget!
 const livePixCustomCss = fs.readFileSync(path.join(ROOT, 'livepix-alert.css'), 'utf8');
@@ -213,7 +213,7 @@ const LIVEPIX_WIDGET_URL = 'https://widget.livepix.gg/embed/bba99ac8-999e-4bf3-8
 const bsAlerts   = makeBrowserSource('alerts', `${ROOT}/preview-alertas.html`, 820, 270, true, true);
 const bsLivePix  = makeBrowserSource('livepix', LIVEPIX_WIDGET_URL, 820, 270, false, true);
 bsLivePix.settings.css = livePixCustomCss;
-const bsChatBox  = makeBrowserSource('chat', `${ROOT}/scenes/07-chat-widget.html`, 476, 640, true, false);
+const bsChatBox  = makeBrowserSource('chat', `${ROOT}/chat-widget.html`, 476, 640, true, false);
 const bsStinger  = makeBrowserSource('Transição Stinger (@apenasojorge)', `${ROOT}/transicao.html?manual=1`, 1920, 1080, true, false);
 
 // 3. Build the 8 Scenes from Friend's OBS Screenshot:

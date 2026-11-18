@@ -216,7 +216,7 @@
       <button class="btn" data-scene="cena-chat.html">Só Chat</button>
       <button class="btn" data-scene="cena-pausa.html">Pausa</button>
       <button class="btn" data-scene="cena-fim.html">Fim</button>
-      <button class="btn" data-scene="scenes/05-mission-completed.html">Missão Concluída 3D</button>
+      <button class="btn" data-scene="cena-missao.html">Missão Concluída 3D</button>
 
       <span class="toolbar-label" style="margin-left: 14px;">Webcam:</span>
       <select id="camSelect">
@@ -232,11 +232,18 @@
 
       <span class="toolbar-label" style="margin-left: 10px;">Moldura:</span>
       <select id="frameSelect">
+        <option value="cam3">Cam 3 (Jacaré de Óculos + Sol)</option>
         <option value="cam2">Cam 2 (GTA VI Logo + Palmeiras)</option>
         <option value="cam1">Cam 1 (Vice City Neon + Palmeiras)</option>
-        <option value="cam3">Cam 3 (Jacaré de Óculos + Sol)</option>
         <option value="cam4">Cam 4 (Vice City Leonida)</option>
         <option value="sunset">Minimalista Sunset Dourada</option>
+      </select>
+
+      <span class="toolbar-label" style="margin-left: 10px;">Meta:</span>
+      <select id="metaSelect">
+        <option value="seguidores">Meta Seguidores (Iniciante)</option>
+        <option value="subs">Meta Subs (Afiliado)</option>
+        <option value="off">Sem Barra de Meta</option>
       </select>
 
       <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-left:8px;cursor:pointer;">
@@ -295,6 +302,7 @@
     const mockGameBg = document.getElementById("mockGameBg");
     const camSelect = document.getElementById("camSelect");
     const frameSelect = document.getElementById("frameSelect");
+    const metaSelect = document.getElementById("metaSelect");
     const guidesToggle = document.getElementById("guidesToggle");
     const transitionToggle = document.getElementById("transitionToggle");
     const testTransitionBtn = document.getElementById("testTransitionBtn");
@@ -313,6 +321,7 @@
       const params = new URLSearchParams();
       if (camSelect.value) params.set("cam", camSelect.value);
       if (frameSelect && frameSelect.value) params.set("frame", frameSelect.value);
+      if (metaSelect && metaSelect.value) params.set("meta", metaSelect.value);
       if (guidesToggle.checked) params.set("guias", "1");
       const qs = params.toString();
       sceneFrame.src = qs ? `${currentScene}?${qs}` : currentScene;
@@ -357,6 +366,7 @@
 
     camSelect.addEventListener("change", reloadScene);
     if (frameSelect) frameSelect.addEventListener("change", reloadScene);
+    if (metaSelect) metaSelect.addEventListener("change", reloadScene);
     guidesToggle.addEventListener("change", reloadScene);
 
     document.querySelectorAll("[data-alert]").forEach((btn) => {
