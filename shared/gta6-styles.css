@@ -1,0 +1,143 @@
+/* ============================================================================
+ * GTA 6 FULL 3D STREAM PACKAGE — TYPOGRAPHY, PALETTES & UI STYLES
+ * Includes Official Pricedown Bl Font + Vice City Twilight Neon Aesthetics
+ * ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Kaushan+Script&family=Pacifico&family=Rajdhani:wght@600;700&display=swap');
+
+@font-face {
+  font-family: 'Pricedown';
+  font-style: normal;
+  font-weight: 900;
+  src: url('fonts/pricedown-bl.woff') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html, body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  background: transparent;
+}
+
+/* Deep Midnight Navy-Purple Background (Starting Soon, BRB, Ending Soon) */
+.bg-midnight-vice {
+  background: radial-gradient(circle at 50% 44%, #1e1736 0%, #141026 56%, #0c0a18 100%);
+  position: relative;
+}
+
+.bg-midnight-vice::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 82%, rgba(235, 75, 208, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 82% 24%, rgba(145, 58, 242, 0.14) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Intermission Tropical Sunset Pink-Purple-to-Cyan Backdrop */
+.bg-intermission-vice {
+  background: linear-gradient(180deg,
+    #884e87 0%,
+    #633a78 24%,
+    #3d285c 52%,
+    #1c3f60 76%,
+    #02a9c4 93%,
+    #00d4ea 100%
+  );
+  position: relative;
+}
+
+/* Authentic GTA Pricedown Geometric Display Title */
+.gta-title {
+  font-family: 'Pricedown', 'Anton', 'Impact', sans-serif;
+  font-size: 196px;
+  line-height: 0.88;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  background: linear-gradient(92deg, #f397bc 0%, #c464b8 50%, #68388e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 14px 28px rgba(8, 4, 18, 0.92));
+  position: relative;
+  display: inline-block;
+  padding: 12px 18px;
+}
+
+/* Handwritten Script Subtitle ("Stream Is Currently" / "A Live Já Vai", etc.) */
+.gta-script {
+  font-family: 'Kaushan Script', 'Pacifico', cursive;
+  font-size: 46px;
+  color: #ffffff;
+  text-shadow:
+    0 2px 12px rgba(255, 82, 206, 0.85),
+    0 5px 20px rgba(0, 0, 0, 0.95);
+  letter-spacing: 0.5px;
+}
+
+/* Blocky Pricedown / Condensed Countdown Timer (04:57, 07:54, 09:58) */
+.gta-timer {
+  font-family: 'Pricedown', 'Anton', sans-serif;
+  font-size: 98px;
+  letter-spacing: 3px;
+  background: linear-gradient(180deg, #ffe7d0 0%, #e5c6b8 52%, #c4a3a4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.92));
+}
+
+/* 6 Gold Wanted-Level Stars Row */
+.wanted-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.wanted-star-svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 10px rgba(255, 196, 77, 0.72));
+  animation: starPulse 2.4s infinite ease-in-out;
+}
+
+.wanted-star-svg:nth-child(2) { animation-delay: 0.2s; }
+.wanted-star-svg:nth-child(3) { animation-delay: 0.4s; }
+.wanted-star-svg:nth-child(4) { animation-delay: 0.6s; }
+.wanted-star-svg:nth-child(5) { animation-delay: 0.8s; }
+.wanted-star-svg:nth-child(6) { animation-delay: 1.0s; }
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 8px rgba(255, 198, 76, 0.55)); }
+  50% { transform: scale(1.13) rotate(5deg); filter: drop-shadow(0 0 16px rgba(255, 215, 110, 0.95)); }
+}
+
+/* Full-screen Three.js Canvas Layer */
+.webgl-layer {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>Cena Pausa â€” JÃ¡ Volto</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    .pausa-card {
+      position: absolute;
+      left: 420px;
+      top: 255px;
+      width: 1080px;
+      height: 450px;
+      z-index: 15;
+      background: rgba(20, 11, 38, 0.72);
+      border-radius: 20px;
+      padding: 46px 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Equalizador minimalista em tons pÃ´r do sol */
+    .pausa-eq {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      height: 36px;
+      margin-bottom: 22px;
+    }
+
+    .pausa-eq span {
+      width: 6px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--grad-sunset);
+      transform-origin: bottom center;
+      animation: eqGentle 1.3s ease-in-out infinite;
+    }
+
+    .pausa-eq span:nth-child(1) { animation-delay: 0s; }
+    .pausa-eq span:nth-child(2) { animation-delay: 0.2s; }
+    .pausa-eq span:nth-child(3) { animation-delay: 0.4s; }
+    .pausa-eq span:nth-child(4) { animation-delay: 0.15s; }
+    .pausa-eq span:nth-child(5) { animation-delay: 0.45s; }
+    .pausa-eq span:nth-child(6) { animation-delay: 0.28s; }
+    .pausa-eq span:nth-child(7) { animation-delay: 0.1s; }
+
+    .pausa-headline {
+      margin-top: 20px;
+      font-size: 92px;
+      line-height: 1.02;
+      letter-spacing: 0.05em;
+    }
+
+    .pausa-message {
+      margin-top: 16px;
+      max-width: 780px;
+      font-family: var(--font-body);
+      font-size: 23px;
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    /* Barra de fluxo contÃ­nua discreta */
+    .sunset-sweep-track {
+      margin-top: 34px;
+      width: 460px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sunset-sweep-beam {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 170px;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--grad-sunset-bar);
+      box-shadow: 0 0 14px rgba(255, 212, 121, 0.6);
+      will-change: transform;
+      animation: progressSweep 2.6s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+    }
+  </style>
+</head>
+<body>
+  <main class="scene-root">
+    <!-- Fundo CrepÃºsculo Miami Sunset -->
+    <div class="sunset-backdrop sunset-backdrop--dusk">
+      <div class="sunset-photo"></div>
+      <div class="sunset-tint"></div>
+      <div class="sunset-sunflare"></div>
+
+      <div class="sun-motes" aria-hidden="true">
+        <span class="sun-mote" style="left: 20%; bottom: 22%; animation-delay: 0s;"></span>
+        <span class="sun-mote" style="left: 36%; bottom: 16%; animation-delay: 2.2s;"></span>
+        <span class="sun-mote" style="left: 52%; bottom: 20%; animation-delay: 4.5s;"></span>
+        <span class="sun-mote" style="left: 68%; bottom: 15%; animation-delay: 1.4s;"></span>
+        <span class="sun-mote" style="left: 82%; bottom: 24%; animation-delay: 3.6s;"></span>
+      </div>
+
+      <div class="editorial-outer-frame"></div>
+    </div>
+
+    <!-- Camada 3D Flutuante GTA 6 -->
+    <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:16;"></canvas>
+
+    <!-- Card Central -->
+    <section class="pausa-card sunset-frame">
+      <div class="pausa-eq" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="tag-pill">
+        <span class="live-dot live-dot--gold"></span>
+        <span data-config="tituloPausa">PAUSA</span>
+      </div>
+
+      <h1 class="pausa-headline title-editorial" data-config="subtituloPausa">
+        JÃ VOLTO
+      </h1>
+
+      <p class="pausa-message" data-config="textoPausa">
+        Voltamos em instantes.
+      </p>
+
+      <div class="sunset-sweep-track" aria-hidden="true">
+        <div class="sunset-sweep-beam"></div>
+      </div>
+    </section>
+
+    <!-- Barra Inferior -->
+    <footer class="bottom-bar glass-bar">
+      <div class="bottom-bar__brand">
+        <span class="live-dot live-dot--gold"></span>
+        <span class="bottom-bar__handle" data-config="arroba">@yGabsxw</span>
+      </div>
+
+      <div id="platformPills" class="platform-pills-group"></div>
+
+      <div id="socialPills" class="social-pills-group"></div>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="shared/three.min.js"></script>
+  <script src="shared/gta6-3d-engine.js"></script>
+  <script>
+    (function initCenaPausa() {
+      const cfg = window.STREAM_CONFIG || {};
+      const helpers = window.STREAM_HELPERS;
+      helpers.bindTextFields();
+      helpers.renderPlatforms(document.getElementById("platformPills"), "pills");
+      helpers.renderSocials(document.getElementById("socialPills"), "pills");
+
+      if (cfg.ativarEfeitos3D !== false && window.THREE && window.GTA6Engine) {
+        const canvas = document.getElementById("scene3dCanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        GTA6Engine.configureRenderer(renderer);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(38, 1920 / 1080, 0.1, 100);
+        camera.position.set(0, 0, 14);
+        GTA6Engine.setupViceLighting(scene, "gold");
+        const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
+        const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
+
+        const cuffsTL = GTA6Engine.createHandcuffs({ envMap });
+        cuffsTL.scale.set(1.35, 1.35, 1.35);
+        cuffsTL.position.set(-5.35, 2.35, 1.8);
+        scene.add(cuffsTL);
+
+        const pistolTR = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
+        pistolTR.scale.set(1.18, 1.18, 1.18);
+        pistolTR.position.set(5.45, 2.95, 1.2);
+        scene.add(pistolTR);
+
+        const cashBR = GTA6Engine.createCashStack({ envMap });
+        cashBR.scale.set(1.18, 1.18, 1.18);
+        cashBR.position.set(4.65, -2.35, 1.4);
+        scene.add(cashBR);
+
+        const clock = new THREE.Clock();
+        (function anim() {
+          requestAnimationFrame(anim);
+          const t = clock.getElapsedTime();
+          cuffsTL.position.y = 2.35 + Math.sin(t * 1.0) * 0.14;
+          cuffsTL.rotation.set(0.35 + Math.sin(t * 0.5) * 0.08, 0.25 + Math.cos(t * 0.6) * 0.1, -0.35);
+          pistolTR.position.y = 2.95 + Math.cos(t * 1.1) * 0.14;
+          pistolTR.rotation.set(0.18, Math.PI + 0.22 + Math.sin(t * 0.6) * 0.08, 0.15);
+          cashBR.position.y = -2.35 + Math.sin(t * 1.15 + 1.0) * 0.12;
+          cashBR.rotation.set(0.75 + Math.sin(t * 0.7) * 0.08, -0.38 + Math.cos(t * 0.6) * 0.1, 0.25);
+          renderer.render(scene, camera);
+        })();
+      }
+    })();
+  </script>
+</body>
+</html>
+

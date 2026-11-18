@@ -1,0 +1,56 @@
+<!--
+  ============================================================================
+  STREAMELEMENTS CUSTOM WIDGET — ALERTBOX MIAMI SUNSET / GTA VI EDITION
+  Cole este arquivo na aba HTML do Custom Widget no StreamElements.
+  Tamanho recomendado do widget no OBS / SE: 820 x 270 px (X: 550, Y: 20).
+  ============================================================================
+-->
+<div id="alertStage" class="alert-stage" aria-live="polite">
+  <article id="alertCard" class="alert-card" data-type="follow" data-tier="1">
+    <!-- Barra de Giroflex Policial (exclusiva do Raid GTA 6★) -->
+    <div class="alert-siren-bar" aria-hidden="true">
+      <span class="siren-lamp siren-lamp--blue"></span>
+      <span class="siren-lamp siren-lamp--white"></span>
+      <span class="siren-lamp siren-lamp--red"></span>
+    </div>
+
+    <!-- Flash ambiente das luzes da polícia (Raid) -->
+    <div class="alert-siren-glow" aria-hidden="true">
+      <span class="siren-blue"></span>
+      <span class="siren-red"></span>
+    </div>
+
+    <!-- Camada de partículas temáticas por evento -->
+    <div id="alertParticles" class="alert-particles" aria-hidden="true"></div>
+
+    <div class="alert-main">
+      <!-- Objeto / Prop principal do alerta -->
+      <div id="alertIcon" class="alert-icon" aria-hidden="true"></div>
+
+      <!-- Conteúdo principal -->
+      <div class="alert-body">
+        <div class="alert-top-row">
+          <div class="alert-badge-group">
+            <span id="alertBadge" class="alert-badge">CHECK-IN</span>
+            <span id="alertStars" class="alert-stars hidden" aria-hidden="true"></span>
+          </div>
+          <span id="alertAmount" class="alert-amount hidden"></span>
+        </div>
+
+        <div class="alert-headline">
+          <span id="alertUser" class="alert-user">Viewer</span>
+          <span id="alertAction" class="alert-action">começou a acompanhar!</span>
+        </div>
+
+        <div id="alertMessageWrap" class="alert-message-wrap hidden">
+          <p id="alertMessage" class="alert-message"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra discreta de duração -->
+    <div class="alert-timer-track" aria-hidden="true">
+      <div id="alertTimerBar" class="alert-timer-bar"></div>
+    </div>
+  </article>
+</div>

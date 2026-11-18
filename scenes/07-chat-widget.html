@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>GTA 6 Stream Package - Chat Widget Animado</title>
+  <link rel="stylesheet" href="../shared/gta6-styles.css" />
+  <style>
+    .chat-container {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 20;
+    }
+
+    .chat-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 24px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(24, 15, 38, 0.90) 0%, rgba(44, 24, 64, 0.86) 100%);
+      border: 2px solid rgba(198, 108, 255, 0.6);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.72),
+        inset 0 0 18px rgba(214, 110, 255, 0.22);
+      color: #ffffff;
+      font-size: 21px;
+      animation: chatSlideIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .chat-badge {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .badge-star {
+      background: linear-gradient(135deg, #b24dff, #ff62c6);
+      box-shadow: 0 0 10px rgba(210, 95, 255, 0.65);
+    }
+
+    .badge-crown {
+      background: linear-gradient(135deg, #ffb838, #ff6b4a);
+      box-shadow: 0 0 10px rgba(255, 168, 64, 0.65);
+    }
+
+    .chat-username {
+      font-weight: 700;
+      color: #f3a6ff;
+      letter-spacing: 0.4px;
+    }
+
+    .chat-message {
+      color: #f4eef8;
+      font-weight: 600;
+    }
+
+    @keyframes chatSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-feed" class="chat-container">
+    <div class="chat-pill">
+      <span class="chat-badge badge-star">★</span>
+      <span class="chat-username">LuciaVice:</span>
+      <span class="chat-message">A live do @apenasojorge tá insana demais!! 🔥🌴</span>
+    </div>
+    <div class="chat-pill">
+      <span class="chat-badge badge-crown">♛</span>
+      <span class="chat-username">JasonLeonida:</span>
+      <span class="chat-message">Os reflexos 3D nas algemas e na Glock tão perfeitos 🔥</span>
+    </div>
+  </div>
+
+  <script>
+    const sampleMessages = [
+      { badge: '★', cls: 'badge-star', user: 'TropaDoJorge:', text: 'Já segui o @apenasojorge na Twitch! Bora bater a meta! 🚀' },
+      { badge: '♛', cls: 'badge-crown', user: 'ReiDeLeonida:', text: 'Mandou 5 Subs de presente pro canal do Jorge! 🎁💸' },
+      { badge: '★', cls: 'badge-star', user: 'NoiteEmMiami:', text: 'Essa animação 3D de Missão Concluída ficou absurda 🔥' },
+      { badge: '♛', cls: 'badge-crown', user: 'OceanDriveBR:', text: 'Raid de 250 pessoas chegando na live do @apenasojorge!! ⚡' }
+    ];
+
+    let idx = 0;
+    const feed = document.getElementById('chat-feed');
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('demo') !== '0') {
+      setInterval(() => {
+        const msg = sampleMessages[idx % sampleMessages.length];
+        idx++;
+        const row = document.createElement('div');
+        row.className = 'chat-pill';
+        row.innerHTML = `
+          <span class="chat-badge ${msg.cls}">${msg.badge}</span>
+          <span class="chat-username">${msg.user}</span>
+          <span class="chat-message">${msg.text}</span>
+        `;
+        feed.appendChild(row);
+        if (feed.children.length > 3) {
+          feed.removeChild(feed.firstElementChild);
+        }
+      }, 3200);
+    }
+  </script>
+</body>
+</html>

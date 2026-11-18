@@ -1,0 +1,11 @@
+{
+  "name": "gta6-3d-stream-package",
+  "version": "1.0.0",
+  "description": "GTA 6 Full 3D Stream Package (WebGL/Three.js OBS Overlays & WebM Renderer)",
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1"
+  }
+}

@@ -1,0 +1,214 @@
+/* ============================================================================
+ *  LIVEPIX-ALERT.CSS — ESTILIZAÇÃO CUSTOMIZADA LIVEPIX (MIAMI SUNSET / GTA VI)
+ *  Como aplicar:
+ *    1. Acesse o painel do LivePix → Alertas → Editar Alerta → CSS Customizado.
+ *    2. Cole todo o conteúdo deste arquivo e salve.
+ *    3. No OBS Studio, adicione a URL do alerta do LivePix em 820x270 px (X:550, Y:20).
+ * ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Montserrat:wght@700;800;900&display=swap');
+
+:root {
+  --lp-emerald: #4fe39a;
+  --lp-gold: #ffd479;
+  --lp-peach: #ff9466;
+  --lp-grad-cash: linear-gradient(135deg, #4fe39a 0%, #ffd479 100%);
+  --lp-font-display: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  --lp-font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Fundo 100% transparente no Browser Source */
+html,
+body {
+  background: transparent !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--lp-font-body) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* ============================================================================
+ *  1. COMPOSIÇÃO FLUTUANTE SEM CAIXA RETANGULAR (MALETA DE VICE)
+ * ============================================================================ */
+.alert-container,
+.alert-box,
+.widget-alert,
+[class*="AlertContainer"],
+[class*="alert-container"],
+[class*="alert-wrapper"],
+#alert-container {
+  position: relative !important;
+  max-width: 760px !important;
+  margin: 12px auto !important;
+  padding: 12px 24px 16px !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='90' viewBox='0 0 140 90'%3E%3Cg opacity='0.18' stroke='%234fe39a' stroke-width='1.5' fill='none'%3E%3Crect x='14' y='12' width='36' height='18' rx='3' transform='rotate(-14 32 21)'/%3E%3Ccircle cx='32' cy='21' r='3.5'/%3E%3Crect x='84' y='48' width='36' height='18' rx='3' transform='rotate(16 102 57)'/%3E%3Ccircle cx='102' cy='57' r='3.5'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 140px 90px repeat,
+    radial-gradient(ellipse at 50% 48%, rgba(18, 10, 36, 0.86) 0%, rgba(18, 10, 36, 0.42) 58%, transparent 80%) !important;
+  text-align: center !important;
+  animation: lpSunsetIn 0.52s cubic-bezier(0.16, 1, 0.3, 1) both,
+             lpBillsDrift 6.5s linear infinite !important;
+}
+
+/* Maleta executiva aberta flutuando no topo */
+.alert-container::before,
+.alert-box::before,
+.widget-alert::before,
+[class*="AlertContainer"]::before,
+[class*="alert-container"]::before,
+#alert-container::before {
+  content: "" !important;
+  display: block !important;
+  width: 108px !important;
+  height: 82px !important;
+  margin: 0 auto 4px !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 92 78' fill='none'%3E%3Cpath d='M18 32L24 14H68L74 32' fill='%232c1d24' stroke='%23ffd479' stroke-width='2.2' stroke-linejoin='round'/%3E%3Crect x='26' y='18' width='18' height='16' rx='2' transform='rotate(-10 26 18)' fill='%232a825c' stroke='%236ff2b2' stroke-width='1.8'/%3E%3Crect x='44' y='16' width='18' height='16' rx='2' transform='rotate(8 44 16)' fill='%23246e4e' stroke='%236ff2b2' stroke-width='1.8'/%3E%3Crect x='34' y='19' width='22' height='16' rx='2' fill='%2332996d' stroke='%23a3ffcf' stroke-width='2'/%3E%3Crect x='12' y='30' width='68' height='38' rx='6' fill='%232d1e26' stroke='%23ffd479' stroke-width='2.4'/%3E%3Cpath d='M12 43H80' stroke='%23ffd479' stroke-width='2'/%3E%3Crect x='39' y='38' width='14' height='10' rx='2' fill='%23ffd479'/%3E%3Cpath d='M36 30V25C36 22.8 37.8 21 40 21H52C54.2 21 56 22.8 56 25V30' stroke='%23ffe59e' stroke-width='2.4'/%3E%3C/svg%3E") center / contain no-repeat !important;
+  filter: drop-shadow(0 0 20px rgba(255, 212, 121, 0.55)) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.78)) !important;
+  animation: lpFloat 2.2s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+
+/* Micro tag LivePix discreta */
+.alert-container::after,
+.alert-box::after,
+.widget-alert::after,
+[class*="AlertContainer"]::after,
+[class*="alert-container"]::after,
+#alert-container::after {
+  content: "PIX • MALETA DE VICE" !important;
+  display: inline-block !important;
+  margin-top: 6px !important;
+  padding: 3px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(18, 10, 36, 0.78) !important;
+  border: 1px solid rgba(255, 212, 121, 0.52) !important;
+  font-family: var(--lp-font-display) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.16em !important;
+  color: var(--lp-gold) !important;
+  white-space: nowrap !important;
+}
+
+/* ============================================================================
+ *  2. NOME DO DOADOR
+ * ============================================================================ */
+.alert-title,
+.alert-header,
+.alert-user,
+.alert-author,
+.author,
+.username,
+.sender,
+[class*="author"],
+[class*="username"],
+[class*="sender"],
+[class*="donor"] {
+  font-family: var(--lp-font-display) !important;
+  font-size: 32px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.01em !important;
+  color: #ffffff !important;
+  text-shadow: 0 4px 16px rgba(8, 4, 18, 0.95) !important;
+  line-height: 1.16 !important;
+}
+
+/* ============================================================================
+ *  3. VALOR DA DOAÇÃO EM DESTAQUE (ESTILO GANHO GTA)
+ * ============================================================================ */
+.alert-amount,
+.alert-value,
+.amount,
+.value,
+.currency,
+[class*="amount"],
+[class*="currency"],
+[class*="price"] {
+  display: inline-block !important;
+  margin: 6px 8px 4px !important;
+  padding: 5px 20px !important;
+  border-radius: 8px !important;
+  background: var(--lp-grad-cash) !important;
+  font-family: var(--lp-font-display) !important;
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.03em !important;
+  color: #130924 !important;
+  text-shadow: none !important;
+  box-shadow: 0 6px 24px rgba(79, 227, 154, 0.55) !important;
+  vertical-align: middle !important;
+}
+
+/* ============================================================================
+ *  4. MENSAGEM DO DOADOR (PÍLULA COMPACTA)
+ * ============================================================================ */
+.alert-message,
+.message,
+.comment,
+[class*="message"],
+[class*="comment"],
+[class*="description"] {
+  display: inline-block !important;
+  max-width: 620px !important;
+  margin-top: 6px !important;
+  padding: 7px 18px !important;
+  border-radius: 999px !important;
+  background: rgba(12, 6, 26, 0.84) !important;
+  border: 1px solid rgba(255, 250, 244, 0.16) !important;
+  font-family: var(--lp-font-body) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.38 !important;
+  color: #f9f4ff !important;
+  word-break: break-word !important;
+}
+
+.alert-message:empty,
+.message:empty,
+[class*="message"]:empty {
+  display: none !important;
+}
+
+.alert-image img,
+.alert-media img,
+[class*="alert"] img {
+  max-height: 74px !important;
+  border-radius: 10px !important;
+  margin-bottom: 6px !important;
+}
+
+/* ============================================================================
+ *  ANIMAÇÕES CSS PURAS (60FPS)
+ * ============================================================================ */
+@keyframes lpSunsetIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0) scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: translate3d(0, 3px, 0) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes lpFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes lpBillsDrift {
+  0% {
+    background-position: 0 0, center;
+  }
+  100% {
+    background-position: 140px 180px, center;
+  }
+}

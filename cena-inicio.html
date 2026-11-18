@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>Cena InÃ­cio â€” A Live JÃ¡ Vai ComeÃ§ar</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    .inicio-hero {
+      position: absolute;
+      left: 310px;
+      top: 72px;
+      width: 1300px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .gta6-logo-video {
+      width: 390px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 34px rgba(10, 4, 24, 0.85));
+      margin-bottom: 4px;
+    }
+
+    .inicio-title {
+      margin-top: 14px;
+      font-size: 64px;
+      line-height: 1.04;
+      letter-spacing: 0.04em;
+    }
+
+    .inicio-subtitle {
+      margin-top: 14px;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sunset-gold);
+      text-shadow: 0 2px 14px rgba(14, 6, 28, 0.85);
+    }
+
+    .inicio-status {
+      margin-top: 10px;
+      max-width: 820px;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-shadow: 0 2px 12px rgba(14, 6, 28, 0.85);
+    }
+
+    /* Card do CronÃ´metro Regressivo */
+    .timer-box {
+      margin-top: 26px;
+      width: 460px;
+      min-height: 174px;
+      padding: 22px 36px 20px;
+      background: rgba(20, 11, 38, 0.68);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .timer-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--sunset-gold);
+    }
+
+    .timer-digits {
+      font-family: var(--font-display);
+      font-size: 98px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+      color: #ffffff;
+      text-shadow: 0 6px 26px rgba(12, 4, 24, 0.72);
+    }
+
+    .timer-digits.timer-finished {
+      font-size: 34px;
+      letter-spacing: 0.1em;
+      line-height: 1.25;
+      padding: 20px 0;
+      color: var(--sunset-gold);
+    }
+
+    .timer-progress-track {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .timer-progress-fill {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--grad-sunset-bar);
+      transform-origin: left center;
+      transition: transform 0.85s linear;
+    }
+  </style>
+</head>
+<body>
+  <main class="scene-root">
+    <!-- Fundo Miami Sunset com Palmeiras Reais -->
+    <div class="sunset-backdrop">
+      <div class="sunset-photo"></div>
+      <div class="sunset-tint"></div>
+      <div class="sunset-sunflare"></div>
+
+      <div class="sun-motes" aria-hidden="true">
+        <span class="sun-mote" style="left: 22%; bottom: 26%; animation-delay: 0s;"></span>
+        <span class="sun-mote" style="left: 38%; bottom: 20%; animation-delay: 2.8s;"></span>
+        <span class="sun-mote" style="left: 54%; bottom: 24%; animation-delay: 5.4s;"></span>
+        <span class="sun-mote" style="left: 69%; bottom: 18%; animation-delay: 1.7s;"></span>
+        <span class="sun-mote" style="left: 81%; bottom: 28%; animation-delay: 4.1s;"></span>
+      </div>
+
+      <div class="editorial-outer-frame"></div>
+    </div>
+
+    <!-- Camada 3D Flutuante GTA 6 (Algemas, Glock, MaÃ§os de $100 e 6 Estrelas) -->
+    <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:12;"></canvas>
+
+    <!-- ConteÃºdo Central -->
+    <section class="inicio-hero">
+      <video class="gta6-logo-video" src="assets/gta6-logo-15s.webm" poster="assets/gta6-logo-static.png" autoplay loop muted playsinline></video>
+      <div id="wantedStarsTop" style="margin-bottom:10px;"></div>
+      <div class="tag-pill">
+        <span class="live-dot live-dot--gold"></span>
+        <span data-config="tagLive">AO VIVO</span>
+      </div>
+
+      <h1 class="inicio-title title-editorial" data-config="tituloInicio">
+        A LIVE JÃ VAI COMEÃ‡AR
+      </h1>
+
+      <p class="inicio-subtitle" data-config="subtituloInicio">
+        Em instantes no ar
+      </p>
+
+      <p class="inicio-status" data-config="textoStatus"></p>
+
+      <div class="timer-box sunset-frame">
+        <span id="timerLabel" class="timer-label">INICIANDO EM</span>
+        <div id="timerDisplay" class="timer-digits">10:00</div>
+        <div class="timer-progress-track">
+          <div id="timerProgress" class="timer-progress-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra Inferior -->
+    <footer class="bottom-bar glass-bar">
+      <div class="bottom-bar__brand">
+        <span class="live-dot"></span>
+        <span class="bottom-bar__handle" data-config="arroba">@yGabsxw</span>
+      </div>
+
+      <div id="platformPills" class="platform-pills-group"></div>
+
+      <div id="socialPills" class="social-pills-group"></div>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="shared/three.min.js"></script>
+  <script src="shared/gta6-3d-engine.js"></script>
+  <script src="shared/gta6-typography.js"></script>
+  <script>
+    (function initCenaInicio() {
+      const cfg = window.STREAM_CONFIG || {};
+      const helpers = window.STREAM_HELPERS;
+
+      helpers.bindTextFields();
+      helpers.renderPlatforms(document.getElementById("platformPills"), "pills");
+      helpers.renderSocials(document.getElementById("socialPills"), "pills");
+      if (window.GTA6Typography) {
+        document.getElementById("wantedStarsTop").innerHTML = GTA6Typography.createWantedStarsHTML(6, 26);
+      }
+
+      if (cfg.ativarEfeitos3D !== false && window.THREE && window.GTA6Engine) {
+        const canvas = document.getElementById("scene3dCanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        GTA6Engine.configureRenderer(renderer);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(38, 1920 / 1080, 0.1, 100);
+        camera.position.set(0, 0, 14);
+        GTA6Engine.setupViceLighting(scene, "gold");
+        const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
+        const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
+
+        const cashTL = GTA6Engine.createCashStack({ envMap });
+        cashTL.scale.set(1.22, 1.22, 1.22);
+        cashTL.position.set(-5.85, 3.15, 0.8);
+        scene.add(cashTL);
+
+        const pistolBL = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
+        pistolBL.scale.set(1.65, 1.65, 1.65);
+        pistolBL.position.set(-5.75, -1.85, 1.8);
+        scene.add(pistolBL);
+
+        const cuffsR = GTA6Engine.createHandcuffs({ envMap });
+        cuffsR.scale.set(1.42, 1.42, 1.42);
+        cuffsR.position.set(5.65, -0.45, 1.5);
+        scene.add(cuffsR);
+
+        const clock = new THREE.Clock();
+        (function anim() {
+          requestAnimationFrame(anim);
+          const t = clock.getElapsedTime();
+          cashTL.position.y = 3.15 + Math.sin(t * 1.1) * 0.14;
+          cashTL.rotation.set(0.65 + Math.sin(t * 0.7) * 0.07, -0.42 + Math.cos(t * 0.6) * 0.09, 0.35);
+          pistolBL.position.y = -1.85 + Math.sin(t * 0.95 + 1.2) * 0.14;
+          pistolBL.rotation.set(0.22 + Math.sin(t * 0.5) * 0.05, 0.32 + Math.cos(t * 0.6) * 0.06, -0.68);
+          cuffsR.position.y = -0.45 + Math.cos(t * 1.05) * 0.16;
+          cuffsR.rotation.set(0.28 + Math.sin(t * 0.6) * 0.08, -0.35 + Math.cos(t * 0.5) * 0.1, 0.18);
+          renderer.render(scene, camera);
+        })();
+      }
+
+      function resolveInitialSeconds() {
+        const queryTime = helpers.getUrlParam("t");
+        if (queryTime) {
+          if (queryTime.includes(":")) {
+            const parts = queryTime.split(":").map((n) => parseInt(n, 10));
+            if (parts.length === 2 && !Number.isNaN(parts[0]) && !Number.isNaN(parts[1])) {
+              return Math.max(0, parts[0] * 60 + parts[1]);
+            }
+          } else {
+            const mins = parseFloat(queryTime);
+            if (!Number.isNaN(mins) && mins >= 0) {
+              return Math.round(mins * 60);
+            }
+          }
+        }
+        const defaultMins = Number(cfg.tempoInicialMinutos);
+        return Math.max(0, Math.round((Number.isNaN(defaultMins) ? 10 : defaultMins) * 60));
+      }
+
+      const totalSeconds = resolveInitialSeconds();
+      let remaining = totalSeconds;
+
+      const timerDisplay = document.getElementById("timerDisplay");
+      const timerLabel = document.getElementById("timerLabel");
+      const timerProgress = document.getElementById("timerProgress");
+
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+      }
+
+      function renderTimer() {
+        if (remaining <= 0) {
+          timerLabel.textContent = "NO AR";
+          timerDisplay.textContent = cfg.textoTimerZerado || "COMEÃ‡ANDO AGORA";
+          timerDisplay.classList.add("timer-finished");
+          timerProgress.style.transform = "scaleX(0)";
+          return;
+        }
+        timerDisplay.textContent = formatTime(remaining);
+        const ratio = totalSeconds > 0 ? remaining / totalSeconds : 0;
+        timerProgress.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
+      }
+
+      renderTimer();
+
+      if (remaining > 0) {
+        const endAt = Date.now() + remaining * 1000;
+        const interval = setInterval(() => {
+          remaining = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+          renderTimer();
+          if (remaining <= 0) {
+            clearInterval(interval);
+          }
+        }, 250);
+      }
+    })();
+  </script>
+</body>
+</html>
+

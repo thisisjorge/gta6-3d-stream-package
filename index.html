@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>GTA 6 Full 3D Stream Package — Central de Controle & Modo Streamer (PT-BR / EN)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d0918;
+      color: #f5eefc;
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 14px 32px;
+      background: linear-gradient(90deg, #1b1130 0%, #2a133d 50%, #152338 100%);
+      border-bottom: 2px solid rgba(255, 110, 215, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 26px;
+      letter-spacing: 1.5px;
+      background: linear-gradient(90deg, #ff7dd8, #ffc266);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 95, 210, 0.2);
+      border: 1px solid #ff6ed4;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffb8ec;
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px 32px;
+      background: #140e24;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .alerts-deck {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .deck-label {
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffb8ec;
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tab-btn {
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(205, 120, 255, 0.35);
+      background: #1f1636;
+      color: #e8daf6;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: linear-gradient(135deg, #c842b8 0%, #8635d8 100%);
+      border-color: #ff9de6;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(212, 82, 255, 0.55);
+    }
+
+    .alert-btn {
+      padding: 6px 13px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 190, 100, 0.45);
+      background: linear-gradient(135deg, #321b4f 0%, #4d2163 100%);
+      color: #ffe6c2;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .alert-btn:hover {
+      background: linear-gradient(135deg, #ff7b54 0%, #d4388d 100%);
+      border-color: #ffe299;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(255, 110, 180, 0.45);
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #ffb86c;
+      background: linear-gradient(135deg, #ff7b54, #d4388d);
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .preview-stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(168, 62, 215, 0.14) 0%, transparent 65%),
+        repeating-conic-gradient(#140f24 0% 25%, #19132c 0% 50%) 50% / 32px 32px;
+    }
+
+    .iframe-container {
+      width: 1280px;
+      height: 720px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 130, 220, 0.5);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
+      position: relative;
+      background: #0e0a1a;
+    }
+
+    iframe {
+      width: 1920px;
+      height: 1080px;
+      border: none;
+      transform: scale(0.6666667);
+      transform-origin: top left;
+    }
+
+    .info-bar {
+      margin-top: 12px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 15px;
+      color: #cbb8e2;
+    }
+
+    code {
+      background: #23183c;
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #ff99e2;
+      border: 1px solid rgba(255, 140, 225, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>GTA 6 PACOTE STREAM 3D • @APENASOJORGE</h1>
+      <span class="badge">Twitch: apenasojorge • Todos os 6 Alertas 3D + Meta de Seguidores & Subs</span>
+    </div>
+    <div class="lang-toggle">
+      <span>Idioma:</span>
+      <button id="lang-pt" class="tab-btn active" onclick="setLanguage('pt')">🇧🇷 Português (PT-BR)</button>
+      <button id="lang-en" class="tab-btn" onclick="setLanguage('en')">🇺🇸 Original (EN)</button>
+      <button class="action-btn" onclick="copyCurrentUrl()">📋 Copiar Link pro OBS</button>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <div class="toolbar">
+      <button class="tab-btn active" onclick="selectScene('scenes/01-starting-soon.html?minutes=5', this)">1. Começando (5m)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/01-starting-soon.html?minutes=10', this)">1B. Começando (10m)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/02-be-right-back.html', this)">2. Já Volto / BRB (3D)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/03-ending-soon.html', this)">3. Encerrando (3D)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/04-intermission.html', this)">4. Intervalo / Gameplay + Cam + Chat</button>
+      <button class="tab-btn" onclick="selectScene('scenes/05-mission-completed.html', this)">5. Missão Concluída (Tela Cheia Alpha)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/06-facecam-alerts-widget.html?mode=followgoal&goal=follows&subs=50/100', this)">6A. Facecam + Meta Seguidores (Iniciante)</button>
+      <button class="tab-btn" onclick="selectScene('scenes/06-facecam-alerts-widget.html?mode=subgoal&goal=subs&subs=50/100', this)">6B. Facecam + Meta de Subs</button>
+      <button class="tab-btn" onclick="selectScene('scenes/07-chat-widget.html', this)">7. Chat Widget Animado</button>
+      <button class="tab-btn" onclick="selectScene('scenes/08-gameplay-live-hud.html?transparent=0&goal=follows', this)">8. HUD Completa de Live</button>
+    </div>
+
+    <!-- Live 3D Alert Testing Deck -->
+    <div class="alerts-deck">
+      <span class="deck-label">🔔 Testar Alertas 3D ao Vivo na Facecam:</span>
+      <button class="alert-btn" onclick="testAlert('follow')">👤 Novo Seguidor (Follow)</button>
+      <button class="alert-btn" onclick="testAlert('sub')">⭐ Novo Inscrito (Sub)</button>
+      <button class="alert-btn" onclick="testAlert('subgift')">🎁 Presente de Sub (Sub Gift)</button>
+      <button class="alert-btn" onclick="testAlert('donate')">💲 Doação PIX / Donate (R$ 100)</button>
+      <button class="alert-btn" onclick="testAlert('bits')">💎 Bits / Cheers (1.000 Bits)</button>
+      <button class="alert-btn" onclick="testAlert('raid')">⚡ Alerta de Raid (250 Viewers)</button>
+    </div>
+  </div>
+
+  <div class="preview-stage">
+    <div class="iframe-container">
+      <iframe id="scene-frame" src="scenes/01-starting-soon.html?minutes=5&lang=pt"></iframe>
+    </div>
+    <div class="info-bar">
+      <span>URL Ativa no OBS: <code id="scene-url">scenes/01-starting-soon.html?minutes=5&lang=pt</code></span>
+      <span>Resolução Nativa: <code>1920x1080 (Full HD 60 FPS)</code></span>
+    </div>
+  </div>
+
+  <script>
+    let currentBaseScene = 'scenes/01-starting-soon.html?minutes=5';
+    let currentLang = 'pt';
+
+    function updateIframe() {
+      const sep = currentBaseScene.includes('?') ? '&' : '?';
+      const fullUrl = `${currentBaseScene}${sep}lang=${currentLang}`;
+      document.getElementById('scene-frame').src = fullUrl;
+      document.getElementById('scene-url').textContent = fullUrl;
+    }
+
+    function selectScene(url, btn) {
+      document.querySelectorAll('.toolbar .tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      currentBaseScene = url;
+      updateIframe();
+    }
+
+    function testAlert(alertType) {
+      // If user is not currently on Facecam or HUD scene, switch to Facecam + Alerts automatically
+      if (!currentBaseScene.includes('06-facecam') && !currentBaseScene.includes('08-gameplay')) {
+        currentBaseScene = `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&icons=1`;
+        document.querySelectorAll('.toolbar .tab-btn').forEach(b => b.classList.remove('active'));
+        updateIframe();
+        return;
+      }
+      // Send live postMessage to trigger the 3D alert inside the running Facecam/HUD
+      const frame = document.getElementById('scene-frame');
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage({ type: 'TRIGGER_ALERT', alertType }, '*');
+      }
+      const sep = currentBaseScene.includes('?') ? '&' : '?';
+      document.getElementById('scene-url').textContent =
+        `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&icons=1&lang=${currentLang}`;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.getElementById('lang-pt').classList.toggle('active', lang === 'pt');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      updateIframe();
+    }
+
+    function copyCurrentUrl() {
+      const rel = document.getElementById('scene-url').textContent;
+      const abs = new URL(rel, window.location.href).href;
+      navigator.clipboard.writeText(abs);
+      alert('Link copiado para colar no OBS Browser Source:\n' + abs);
+    }
+  </script>
+</body>
+</html>

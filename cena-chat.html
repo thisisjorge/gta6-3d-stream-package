@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>Cena SÃ³ Chat â€” Miami Sunset</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    /* Fundo transparente na raiz para permitir o recorte vazado da webcam no OBS */
+    html,
+    body,
+    .scene-root {
+      background: transparent !important;
+    }
+
+    /* Recorta um vÃ£o 100% transparente (1272x712 com cantos arredondados) na Ã¡rea da cÃ¢mera */
+    .sunset-backdrop.has-webcam-cutout {
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3Cmask id='camHole'%3E%3Crect width='1920' height='1080' fill='white'/%3E%3Crect x='56' y='136' width='1272' height='712' rx='10' ry='10' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='white' mask='url(%23camHole)'/%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3Cmask id='camHole'%3E%3Crect width='1920' height='1080' fill='white'/%3E%3Crect x='56' y='136' width='1272' height='712' rx='10' ry='10' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='white' mask='url(%23camHole)'/%3E%3C/svg%3E");
+      -webkit-mask-size: 1920px 1080px;
+      mask-size: 1920px 1080px;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    /* CabeÃ§alho Superior (X:52, Y:44, 1816x66) */
+    .chat-header {
+      position: absolute;
+      left: 52px;
+      top: 44px;
+      width: 1816px;
+      height: 66px;
+      padding: 0 24px;
+      z-index: 15;
+    }
+
+    .chat-header__left,
+    .chat-header__right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .chat-header__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: var(--grad-sunset);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1a0d2e;
+    }
+
+    .chat-header__status {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .chat-header__live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 250, 244, 0.24);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    /* Moldura Principal da Webcam (X:52, Y:132, 1280x720) */
+    .chat-cam-slot {
+      position: absolute;
+      left: 52px;
+      top: 132px;
+      width: 1280px;
+      height: 720px;
+      z-index: 15;
+      background: transparent;
+      padding: 4px;
+    }
+
+    .chat-cam-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* CartÃ£o alternativo exibido quando mostrarWebcam = false */
+    .chat-nocam-card {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255, 148, 102, 0.22), transparent 58%),
+        rgba(18, 10, 34, 0.88);
+    }
+
+    .chat-cam-slot.no-webcam .chat-nocam-card {
+      display: flex;
+    }
+
+    .nocam-sun {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--grad-sunset);
+      box-shadow: 0 14px 40px rgba(232, 104, 120, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 900;
+      color: #1a0d2e;
+    }
+
+    .nocam-title {
+      font-size: 48px;
+      letter-spacing: 0.04em;
+    }
+
+    .nocam-desc {
+      margin-top: 12px;
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 680px;
+    }
+
+    /* Painel do Chat (X:1360, Y:132, 508x720) */
+    .chat-panel {
+      position: absolute;
+      left: 1360px;
+      top: 132px;
+      width: 508px;
+      height: 720px;
+      z-index: 15;
+      border-radius: 14px;
+      background: rgba(18, 10, 36, 0.82);
+      border: 1.5px solid rgba(255, 250, 244, 0.4);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chat-panel__header {
+      height: 56px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(255, 148, 102, 0.16), rgba(232, 104, 120, 0.14));
+      border-bottom: 1px solid rgba(255, 250, 244, 0.14);
+      flex-shrink: 0;
+    }
+
+    .chat-panel__title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sunset-gold);
+    }
+
+    /* Ãrea Ãºtil para encaixar o chat no OBS: X:1376, Y:196, 476x640 */
+    .chat-panel__viewport {
+      flex: 1;
+      margin: 8px 16px 16px 16px;
+      border-radius: 10px;
+      background: rgba(12, 6, 26, 0.52);
+      border: 1px solid rgba(255, 250, 244, 0.08);
+      position: relative;
+    }
+
+    /* Barra Inferior de Identidade Visual (X:52, Y:890, 1816x132) */
+    .chat-footer {
+      position: absolute;
+      left: 52px;
+      top: 890px;
+      width: 1816px;
+      height: 132px;
+      padding: 0 32px;
+      z-index: 15;
+    }
+
+    .chat-footer__identity {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-emblem {
+      min-width: 64px;
+      height: 64px;
+      padding: 0 16px;
+      border-radius: 14px;
+      background: var(--grad-sunset);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 900;
+      color: #1a0d2e;
+      box-shadow: 0 10px 24px rgba(232, 104, 120, 0.28);
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1.08;
+      color: #ffffff;
+    }
+
+    .brand-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .chat-footer__right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main class="scene-root">
+    <!-- Fundo Miami Sunset Suavizado (com recorte transparente na Ã¡rea da webcam) -->
+    <div id="chatBackdrop" class="sunset-backdrop sunset-backdrop--chat has-webcam-cutout">
+      <div class="sunset-photo"></div>
+      <div class="sunset-tint"></div>
+      <div class="editorial-outer-frame"></div>
+    </div>
+
+    <!-- CabeÃ§alho Superior -->
+    <header class="chat-header glass-bar">
+      <div class="chat-header__left">
+        <span class="chat-header__badge" data-config="tituloChat">SÃ“ CHAT</span>
+        <span class="chat-header__status" data-config="textoStatus"></span>
+      </div>
+
+      <div class="chat-header__right">
+        <span class="chat-header__live-pill">
+          <span class="live-dot"></span>
+          AO VIVO
+        </span>
+        <div id="headerPlatformIcons" class="platforms-inline"></div>
+      </div>
+    </header>
+
+    <!-- Lado Esquerdo: Moldura Grande 16:9 da Webcam -->
+    <section id="chatCamSlot" class="chat-cam-slot sunset-frame">
+      <div class="chat-cam-inner">
+        <div class="obs-guide">
+          ÃREA VAZADA DA WEBCAM (16:9 HD)
+          <span>COLOQUE A WEBCAM ATRÃS DA CENA â€¢ X: 52 â€¢ Y: 132 â€¢ 1280 Ã— 720 PX</span>
+        </div>
+
+        <div class="chat-nocam-card">
+          <div class="nocam-sun" data-config="iniciaisEmblema">G</div>
+          <h2 class="nocam-title title-editorial" data-config="arroba">@yGabsxw</h2>
+          <p class="nocam-desc" data-config="subtituloChat">Conversando com o chat</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lado Direito: Ãrea Delimitada e Estilizada para Chat do OBS -->
+    <aside class="chat-panel">
+      <div class="chat-panel__header">
+        <span class="chat-panel__title">
+          <span class="live-dot live-dot--gold"></span>
+          CHAT AO VIVO
+        </span>
+        <div id="chatPlatformIcons" class="platforms-inline"></div>
+      </div>
+
+      <div class="chat-panel__viewport">
+        <div class="obs-guide">
+          JANELA DO CHAT OBS
+          <span>X: 1376 â€¢ Y: 196 â€¢ 476 Ã— 640 PX</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Barra Inferior -->
+    <footer class="chat-footer glass-bar">
+      <div class="chat-footer__identity">
+        <div class="brand-emblem" data-config="iniciaisEmblema">J</div>
+        <div class="brand-copy">
+          <span class="brand-name" data-config="arroba">@apenasojorge</span>
+          <span class="brand-sub" data-config="subtituloChat">Conversando com o chat</span>
+        </div>
+      </div>
+
+      <div id="footerPlatformPills" class="platform-pills-group"></div>
+
+      <div class="chat-footer__right">
+        <div id="footerSocialPills" class="social-pills-group"></div>
+      </div>
+    </footer>
+
+    <!-- Camadas 3D GTA 6 (NÃ­tida + Algema com Desfoque Depth-of-Field no Canto Inferior Direito) -->
+    <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:22;"></canvas>
+    <canvas id="scene3dDofCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:24;filter:blur(3.5px);"></canvas>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="shared/three.min.js"></script>
+  <script src="shared/gta6-3d-engine.js"></script>
+  <script>
+    (function initCenaChat() {
+      const cfg = window.STREAM_CONFIG || {};
+      const helpers = window.STREAM_HELPERS;
+
+      helpers.bindTextFields();
+      helpers.renderPlatforms(document.getElementById("headerPlatformIcons"), "icons");
+      helpers.renderPlatforms(document.getElementById("chatPlatformIcons"), "icons");
+      helpers.renderPlatforms(document.getElementById("footerPlatformPills"), "pills");
+      helpers.renderSocials(document.getElementById("footerSocialPills"), "pills");
+
+      const paramGuias = helpers.getUrlParam("guias");
+      if (cfg.mostrarGuiasOBS || paramGuias === "1" || paramGuias === "true") {
+        document.body.classList.add("show-obs-guides");
+      }
+
+      const camParam = helpers.getUrlParam("cam");
+      const showCam = camParam === "off" ? false : cfg.mostrarWebcam !== false;
+      const camSlot = document.getElementById("chatCamSlot");
+      const backdrop = document.getElementById("chatBackdrop");
+      if (!showCam) {
+        camSlot.classList.add("no-webcam");
+        backdrop.classList.remove("has-webcam-cutout");
+      } else {
+        backdrop.classList.add("has-webcam-cutout");
+      }
+
+      if (cfg.ativarEfeitos3D !== false && window.THREE && window.GTA6Engine) {
+        const canvas = document.getElementById("scene3dCanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        GTA6Engine.configureRenderer(renderer);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(38, 1920 / 1080, 0.1, 100);
+        camera.position.set(0, 0, 14);
+        GTA6Engine.setupViceLighting(scene, "gold");
+        const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
+        const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
+
+        // 1. MaÃ§o de $100 sobre a borda superior da webcam principal
+        const cashTop = GTA6Engine.createCashStack({ envMap });
+        cashTop.scale.set(1.18, 1.18, 1.18);
+        cashTop.position.set(-0.95, 3.35, 1.4);
+        scene.add(cashTop);
+
+        // 2. Pistola 3D no canto inferior esquerdo da moldura da webcam (acima da barra de rodapÃ©)
+        const pistolBL = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
+        pistolBL.scale.set(0.76, 0.76, 0.76);
+        pistolBL.position.set(-6.55, -2.05, 2.0);
+        scene.add(pistolBL);
+
+        // 3. Algemas 3D com Depth-of-Field blur no canto inferior direito
+        const dofCanvas = document.getElementById("scene3dDofCanvas");
+        const dofRenderer = new THREE.WebGLRenderer({ canvas: dofCanvas, alpha: true, antialias: true });
+        GTA6Engine.configureRenderer(dofRenderer);
+        const dofScene = new THREE.Scene();
+        GTA6Engine.setupViceLighting(dofScene, "gold");
+        const dofEnv = GTA6Engine.getStudioEnvMap(dofRenderer, "purple");
+        const cuffsBR = GTA6Engine.createHandcuffs({ envMap: dofEnv });
+        cuffsBR.scale.set(1.25, 1.25, 1.25);
+        cuffsBR.position.set(6.25, -3.55, 2.2);
+        dofScene.add(cuffsBR);
+
+        const clock = new THREE.Clock();
+        (function anim() {
+          requestAnimationFrame(anim);
+          const t = clock.getElapsedTime();
+          cashTop.position.y = 3.35 + Math.sin(t * 1.1) * 0.10;
+          cashTop.rotation.set(1.12 + Math.sin(t * 0.6) * 0.06, -0.25 + Math.cos(t * 0.5) * 0.08, -1.15);
+          pistolBL.position.y = -2.05 + Math.cos(t * 1.0) * 0.08;
+          pistolBL.rotation.set(0.25, 0.28 + Math.sin(t * 0.6) * 0.08, -0.52);
+          cuffsBR.position.y = -3.55 + Math.sin(t * 0.95 + 1.0) * 0.12;
+          cuffsBR.rotation.set(0.35, -0.45 + Math.cos(t * 0.5) * 0.1, 0.25);
+          renderer.render(scene, camera);
+          dofRenderer.render(dofScene, camera);
+        })();
+      }
+    })();
+  </script>
+</body>
+</html>
+

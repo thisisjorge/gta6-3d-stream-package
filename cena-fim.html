@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>Cena Fim â€” Live Encerrada</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    .fim-content {
+      position: absolute;
+      left: 220px;
+      top: 138px;
+      width: 1480px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .fim-title {
+      margin-top: 22px;
+      font-size: 82px;
+      line-height: 1.02;
+      letter-spacing: 0.04em;
+    }
+
+    .fim-thanks {
+      margin-top: 16px;
+      max-width: 860px;
+      font-family: var(--font-body);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      text-shadow: 0 2px 14px rgba(14, 6, 28, 0.85);
+    }
+
+    /* Grade de Plataformas e Redes Sociais */
+    .fim-networks {
+      margin-top: 56px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .fim-section-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--sunset-gold);
+    }
+
+    .cards-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      width: 100%;
+    }
+
+    .social-card {
+      position: relative;
+      min-width: 300px;
+      height: 92px;
+      padding: 0 26px;
+      border-radius: 16px;
+      background: rgba(20, 11, 38, 0.78);
+      border: 1.5px solid rgba(255, 250, 244, 0.34);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: var(--shadow-soft);
+      text-align: left;
+    }
+
+    .social-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 250, 244, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .social-card-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .social-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .social-card-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .social-card-handle {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .social-card.social-instagram {
+      border-color: rgba(255, 180, 130, 0.58);
+    }
+
+    /* RodapÃ© */
+    .fim-footer {
+      position: absolute;
+      left: 310px;
+      bottom: 52px;
+      width: 1300px;
+      height: 64px;
+      padding: 0 32px;
+      z-index: 15;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .fim-footer__text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main class="scene-root">
+    <!-- Fundo Fim de Tarde Miami Sunset -->
+    <div class="sunset-backdrop sunset-backdrop--evening">
+      <div class="sunset-photo"></div>
+      <div class="sunset-tint"></div>
+      <div class="sunset-sunflare"></div>
+
+      <div class="sun-motes" aria-hidden="true">
+        <span class="sun-mote" style="left: 24%; bottom: 24%; animation-delay: 0.5s;"></span>
+        <span class="sun-mote" style="left: 44%; bottom: 18%; animation-delay: 3.1s;"></span>
+        <span class="sun-mote" style="left: 62%; bottom: 22%; animation-delay: 1.8s;"></span>
+        <span class="sun-mote" style="left: 78%; bottom: 26%; animation-delay: 4.9s;"></span>
+      </div>
+
+      <div class="editorial-outer-frame"></div>
+    </div>
+
+    <!-- Camada 3D Flutuante GTA 6 -->
+    <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:16;"></canvas>
+
+    <!-- ConteÃºdo -->
+    <section class="fim-content">
+      <div id="wantedStarsTop" style="margin-bottom:14px;"></div>
+      <div class="tag-pill">
+        <span class="live-dot live-dot--gold"></span>
+        <span data-config="arroba">@apenasojorge</span>
+      </div>
+
+      <h1 class="fim-title title-editorial" data-config="tituloFim">
+        LIVE ENCERRADA
+      </h1>
+
+      <p class="fim-thanks" data-config="textoAgradecimento">
+        Obrigado por acompanhar a transmissÃ£o de hoje!
+      </p>
+
+      <div class="fim-networks">
+        <span class="fim-section-label">SIGA NAS PLATAFORMAS E REDES SOCIAIS</span>
+        <div id="platformCards" class="cards-row"></div>
+        <div id="socialCards" class="cards-row"></div>
+      </div>
+    </section>
+
+    <!-- RodapÃ© -->
+    <footer class="fim-footer glass-bar">
+      <span class="live-dot live-dot--gold"></span>
+      <span class="fim-footer__text" data-config="proximaLive">
+        Acompanhe as redes abaixo para saber das prÃ³ximas lives
+      </span>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="shared/three.min.js"></script>
+  <script src="shared/gta6-3d-engine.js"></script>
+  <script src="shared/gta6-typography.js"></script>
+  <script>
+    (function initCenaFim() {
+      const cfg = window.STREAM_CONFIG || {};
+      const helpers = window.STREAM_HELPERS;
+      helpers.bindTextFields();
+      helpers.renderPlatforms(document.getElementById("platformCards"), "cards");
+      helpers.renderSocials(document.getElementById("socialCards"), "cards");
+      if (window.GTA6Typography) {
+        document.getElementById("wantedStarsTop").innerHTML = GTA6Typography.createWantedStarsHTML(6, 26);
+      }
+
+      if (cfg.ativarEfeitos3D !== false && window.THREE && window.GTA6Engine) {
+        const canvas = document.getElementById("scene3dCanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        GTA6Engine.configureRenderer(renderer);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(38, 1920 / 1080, 0.1, 100);
+        camera.position.set(0, 0, 14);
+        GTA6Engine.setupViceLighting(scene, "gold");
+        const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
+        const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
+
+        const cuffsBL = GTA6Engine.createHandcuffs({ envMap });
+        cuffsBL.scale.set(1.28, 1.28, 1.28);
+        cuffsBL.position.set(-6.15, -1.85, 1.8);
+        scene.add(cuffsBL);
+
+        const pistolBR = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
+        pistolBR.scale.set(1.48, 1.48, 1.48);
+        pistolBR.position.set(5.65, -2.45, 2.0);
+        scene.add(pistolBR);
+
+        const cashTR = GTA6Engine.createCashStack({ envMap });
+        cashTR.scale.set(1.25, 1.25, 1.25);
+        cashTR.position.set(4.55, 3.15, 1.0);
+        scene.add(cashTR);
+
+        const clock = new THREE.Clock();
+        (function anim() {
+          requestAnimationFrame(anim);
+          const t = clock.getElapsedTime();
+          cuffsBL.position.y = -1.75 + Math.sin(t * 1.05) * 0.15;
+          cuffsBL.rotation.set(0.32 + Math.sin(t * 0.5) * 0.08, 0.35 + Math.cos(t * 0.6) * 0.1, 0.25);
+          pistolBR.position.y = -2.35 + Math.cos(t * 0.95) * 0.14;
+          pistolBR.rotation.set(0.18 + Math.sin(t * 0.5) * 0.05, Math.PI - 0.28 + Math.cos(t * 0.6) * 0.07, 0.18);
+          cashTR.position.y = 3.15 + Math.sin(t * 1.15 + 0.8) * 0.14;
+          cashTR.rotation.set(0.68 + Math.sin(t * 0.7) * 0.08, -0.35 + Math.cos(t * 0.6) * 0.1, 0.28);
+          renderer.render(scene, camera);
+        })();
+      }
+    })();
+  </script>
+</body>
+</html>
+

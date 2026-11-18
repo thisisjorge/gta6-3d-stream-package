@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+  <title>Overlay Gameplay 3D â€” Miami Sunset (@apenasojorge)</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    /* Fundo 100% transparente nativo para Browser Source do OBS Studio */
+    html,
+    body,
+    .scene-root {
+      background: transparent !important;
+    }
+
+    .gameplay-hud {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    /* PosiÃ§Ãµes configurÃ¡veis via config.js -> webcamPosicao ou ?cam=... */
+    .gameplay-hud.pos-middle-left {
+      left: 36px;
+      top: 300px;
+      align-items: flex-start;
+    }
+
+    .gameplay-hud.pos-top-left {
+      left: 36px;
+      top: 40px;
+      align-items: flex-start;
+    }
+
+    .gameplay-hud.pos-bottom-left {
+      left: 36px;
+      bottom: 36px;
+      align-items: flex-start;
+    }
+
+    .gameplay-hud.pos-top-right {
+      right: 36px;
+      top: 40px;
+      align-items: flex-end;
+    }
+
+    .gameplay-hud.pos-middle-right {
+      right: 36px;
+      top: 300px;
+      align-items: flex-end;
+    }
+
+    .gameplay-hud.pos-bottom-right {
+      right: 36px;
+      bottom: 36px;
+      align-items: flex-end;
+    }
+
+    .gameplay-hud.no-cam-dock {
+      top: auto !important;
+      bottom: 36px !important;
+    }
+
+    /* Moldura Sunset Editorial 16:9 (Externa 424x242 | Interna Ãºtil 416x234) */
+    .webcam-frame {
+      position: relative;
+      width: 424px;
+      height: 242px;
+      padding: 4px;
+      background: transparent;
+      border-radius: 14px;
+    }
+
+    .webcam-aperture {
+      position: relative;
+      width: 416px;
+      height: 234px;
+      border-radius: 10px;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    /* Moldura Custom PNG (Cam 1, Cam 2, Cam 3, Cam 4 da pasta Downloads) */
+    .webcam-frame.has-png-skin::before,
+    .webcam-frame.has-png-skin::after {
+      display: none !important;
+    }
+
+    .webcam-frame.has-png-skin {
+      box-shadow: none !important;
+    }
+
+    .cam-png-skin {
+      position: absolute;
+      left: -18px;
+      top: -14px;
+      width: 460px;
+      height: 274px;
+      object-fit: fill;
+      pointer-events: none;
+      z-index: 20;
+      display: none;
+      filter: drop-shadow(0 14px 32px rgba(8, 3, 18, 0.72));
+    }
+
+    .webcam-frame.has-png-skin .cam-png-skin {
+      display: block;
+    }
+
+    /* Canvas 3D local acoplado Ã  moldura 16:9 da Webcam (Algemas 3D + Pistola 3D + Estrela 3D) */
+    .cam-3d-accents {
+      position: absolute;
+      left: -68px;
+      top: -68px;
+      width: 560px;
+      height: 378px;
+      pointer-events: none;
+      z-index: 25;
+    }
+
+    /* Barra minimalista com @apenasojorge + YouTube, Twitch e Kick */
+    .identity-bar {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 46px;
+      min-width: 424px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: rgba(20, 11, 36, 0.88);
+      border: 1.5px solid rgba(255, 250, 244, 0.34);
+      box-shadow:
+        0 12px 28px rgba(10, 4, 22, 0.56),
+        0 0 18px rgba(255, 148, 102, 0.18);
+    }
+
+    .identity-bar::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--grad-sunset-bar);
+      opacity: 0.88;
+    }
+
+    .identity-bar.compact {
+      min-width: 0;
+      padding: 0 18px;
+      gap: 14px;
+    }
+
+    .identity-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .identity-handle {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .identity-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 250, 244, 0.24);
+      flex-shrink: 0;
+    }
+
+    .identity-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Guia opcional para alinhar alertas */
+    .alerts-safe-guide {
+      display: none;
+      position: absolute;
+      left: 550px;
+      top: 20px;
+      width: 820px;
+      height: 270px;
+      border-radius: 14px;
+      border: 1.5px dashed rgba(255, 212, 121, 0.6);
+      background: rgba(20, 11, 36, 0.35);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(255, 212, 121, 0.92);
+      text-transform: uppercase;
+    }
+
+    body.show-obs-guides .alerts-safe-guide {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <main class="scene-root">
+    <!-- Guia opcional para posicionar alertas (sÃ³ aparece se mostrarGuiasOBS: true) -->
+    <div class="alerts-safe-guide">
+      ZONA DE ALERTAS 3D (STREAMELEMENTS / LIVEPIX)
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);">X: 550 â€¢ Y: 20 â€¢ 820 Ã— 270 PX</span>
+    </div>
+
+    <!-- HUD de Gameplay Limpa (Webcam 16:9 com cantoneiras 3D + Barra @apenasojorge) -->
+    <section id="gameplayHud" class="gameplay-hud pos-middle-left">
+      <div id="webcamFrame" class="webcam-frame sunset-frame">
+        <div class="webcam-aperture">
+          <div class="obs-guide">
+            WEBCAM 16:9
+            <span id="camCoordsHint">X: 40 â€¢ Y: 304 â€¢ 416 Ã— 234 PX</span>
+          </div>
+        </div>
+        <img id="camPngSkin" class="cam-png-skin" src="assets/cam-frame-2.png" alt="" />
+        <!-- Efeitos 3D sutis nas quinas da cÃ¢mera (Algemas 3D + Pistola 3D + MaÃ§o $100) -->
+        <canvas id="cam3dCanvas" class="cam-3d-accents" width="560" height="378"></canvas>
+      </div>
+
+      <div id="identityBar" class="identity-bar">
+        <div class="identity-left">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span class="identity-handle" data-config="arroba">@apenasojorge</span>
+        </div>
+
+        <div class="identity-right">
+          <span class="identity-divider" aria-hidden="true"></span>
+          <div id="platformIcons" class="platforms-inline"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="shared/three.min.js"></script>
+  <script src="shared/gta6-3d-engine.js"></script>
+  <script>
+    (function initGameplayOverlay() {
+      const cfg = window.STREAM_CONFIG || {};
+      const helpers = window.STREAM_HELPERS;
+
+      helpers.bindTextFields();
+      helpers.renderPlatforms(document.getElementById("platformIcons"), "icons");
+
+      const paramGuias = helpers.getUrlParam("guias");
+      if (cfg.mostrarGuiasOBS || paramGuias === "1" || paramGuias === "true") {
+        document.body.classList.add("show-obs-guides");
+      }
+
+      const validPositions = [
+        "middle-left",
+        "top-left",
+        "bottom-left",
+        "top-right",
+        "middle-right",
+        "bottom-right"
+      ];
+
+      const camParam = helpers.getUrlParam("cam");
+      let showCam = cfg.mostrarWebcam !== false;
+      let pos = validPositions.includes(cfg.webcamPosicao) ? cfg.webcamPosicao : "middle-left";
+
+      if (camParam === "off" || camParam === "false" || camParam === "0") {
+        showCam = false;
+      } else if (camParam && validPositions.includes(camParam)) {
+        pos = camParam;
+        showCam = true;
+      }
+
+      const hud = document.getElementById("gameplayHud");
+      const webcamFrame = document.getElementById("webcamFrame");
+      const camPngSkin = document.getElementById("camPngSkin");
+      const identityBar = document.getElementById("identityBar");
+      const coordsHint = document.getElementById("camCoordsHint");
+
+      const frameStyleParam = helpers.getUrlParam("frame") || cfg.webcamFrameStyle || "cam2";
+      const skinMap = {
+        cam1: "assets/cam-frame-1.png",
+        cam2: "assets/cam-frame-2.png",
+        cam3: "assets/cam-frame-3.png",
+        cam4: "assets/cam-frame-4.png"
+      };
+      if (skinMap[frameStyleParam] && camPngSkin) {
+        camPngSkin.src = skinMap[frameStyleParam];
+        webcamFrame.classList.add("has-png-skin");
+      } else {
+        webcamFrame.classList.remove("has-png-skin");
+      }
+
+      const coordsMap = {
+        "middle-left":  "X: 40 â€¢ Y: 304 â€¢ 416 Ã— 234 PX",
+        "top-left":     "X: 40 â€¢ Y: 44 â€¢ 416 Ã— 234 PX",
+        "bottom-left":  "X: 40 â€¢ Y: 748 â€¢ 416 Ã— 234 PX",
+        "top-right":    "X: 1464 â€¢ Y: 44 â€¢ 416 Ã— 234 PX",
+        "middle-right": "X: 1464 â€¢ Y: 304 â€¢ 416 Ã— 234 PX",
+        "bottom-right": "X: 1464 â€¢ Y: 748 â€¢ 416 Ã— 234 PX"
+      };
+
+      hud.className = "gameplay-hud pos-" + pos;
+      if (coordsHint) coordsHint.textContent = coordsMap[pos] || "";
+
+      if (!showCam) {
+        webcamFrame.classList.add("hidden");
+        identityBar.classList.add("compact");
+        if (pos === "middle-left" || pos === "middle-right") {
+          hud.classList.add("no-cam-dock");
+        }
+        return;
+      }
+
+      // Inicializa os detalhes 3D sutis nas quinas da moldura 16:9 da Webcam
+      if (cfg.ativarEfeitos3D !== false && window.THREE && window.GTA6Engine) {
+        const canvas = document.getElementById("cam3dCanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(560, 378);
+        renderer.setPixelRatio(1);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.18;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(35, 560 / 378, 0.1, 100);
+        camera.position.set(0, 0, 10);
+
+        GTA6Engine.setupViceLighting(scene, "gold");
+        const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
+        const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
+
+        // 1. Mini Algema 3D no canto superior esquerdo da moldura 16:9
+        const cuffs = GTA6Engine.createHandcuffs({ envMap });
+        cuffs.scale.set(0.28, 0.28, 0.28);
+        cuffs.position.set(-3.12, 1.88, 0.5);
+        scene.add(cuffs);
+
+        // 2. Mini MaÃ§o de $100 no topo central da moldura
+        const cash = GTA6Engine.createCashStack({ envMap });
+        cash.scale.set(0.20, 0.20, 0.20);
+        cash.position.set(0.0, 2.02, 0.5);
+        scene.add(cash);
+
+        // 3. Mini Pistola Glock 3D Bronze/Gold no canto inferior direito da moldura
+        const pistol = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
+        pistol.scale.set(0.32, 0.32, 0.32);
+        pistol.position.set(3.15, -1.65, 0.8);
+        scene.add(pistol);
+
+        const clock = new THREE.Clock();
+        function animate3D() {
+          requestAnimationFrame(animate3D);
+          const t = clock.getElapsedTime();
+          cuffs.rotation.set(0.25, 0.2 + Math.sin(t * 1.2) * 0.14, 0.42);
+          cash.rotation.set(0.75, Math.sin(t * 1.1) * 0.22, 0.25);
+          pistol.rotation.set(0.22, Math.PI + 0.22 + Math.cos(t * 1.15) * 0.12, 0.52);
+          renderer.render(scene, camera);
+        }
+        animate3D();
+      }
+    })();
+  </script>
+</body>
+</html>
+

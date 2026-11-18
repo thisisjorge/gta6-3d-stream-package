@@ -1,0 +1,492 @@
+/* ============================================================================
+ *  THEME.CSS — IDENTIDADE MIAMI SUNSET / EDITORIAL BROADCAST
+ *  Estética: Pôr do sol tropical, Art Déco, molduras arquitetônicas limpas
+ *  Otimizado para 1920x1080 @ 60fps no OBS Studio
+ * ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap');
+
+:root {
+  /* Paleta Miami Sunset */
+  --sunset-indigo: #1e1238;
+  --sunset-plum: #3d2154;
+  --sunset-mauve: #7a3e65;
+  --sunset-coral: #e86878;
+  --sunset-peach: #ff9466;
+  --sunset-gold: #ffd479;
+  --sunset-aqua: #67d7e0;
+  --sunset-ivory: #fffaf4;
+
+  /* Superfícies Glass / Broadcast */
+  --surface-glass: rgba(22, 12, 42, 0.74);
+  --surface-glass-deep: rgba(16, 9, 32, 0.86);
+  --border-ivory: rgba(255, 250, 244, 0.74);
+  --border-soft: rgba(255, 212, 121, 0.34);
+
+  /* Degradês */
+  --grad-sunset: linear-gradient(135deg, #ff7b72 0%, #ffa066 52%, #ffd479 100%);
+  --grad-sunset-bar: linear-gradient(90deg, #e86878 0%, #ff9466 50%, #ffd479 100%);
+  --grad-twilight: linear-gradient(180deg, rgba(22, 12, 42, 0.62) 0%, rgba(45, 21, 58, 0.28) 52%, rgba(16, 9, 30, 0.78) 100%);
+
+  /* Cores das plataformas */
+  --yt-color: #ff4757;
+  --tw-color: #b48aff;
+  --kick-color: #53fc18;
+  --ig-color: #ff85b3;
+
+  /* Tipografia */
+  --font-display: 'Montserrat', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  /* Textos */
+  --text-primary: #ffffff;
+  --text-secondary: #f3e6e8;
+  --text-muted: #cbbad1;
+
+  /* Sombras & Raios */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --shadow-soft: 0 18px 46px rgba(10, 4, 22, 0.56);
+  --shadow-warm: 0 12px 36px rgba(232, 104, 120, 0.24);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+.scene-root {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================================
+ *  FUNDO MIAMI SUNSET COM PALMEIRAS REAIS + MOVIMENTO SUTIL (60FPS)
+ * ============================================================================ */
+
+.sunset-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #1e1238;
+}
+
+.sunset-photo {
+  position: absolute;
+  inset: -24px;
+  background-image: url('assets/miami-sunset-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  will-change: transform;
+  animation: sunsetBreathe 28s ease-in-out infinite alternate;
+}
+
+/* Camadas de atmosfera por tipo de cena */
+.sunset-tint {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-twilight);
+  pointer-events: none;
+}
+
+.sunset-backdrop--dusk .sunset-photo {
+  filter: saturate(0.95) brightness(0.74);
+}
+
+.sunset-backdrop--dusk .sunset-tint {
+  background: linear-gradient(180deg, rgba(20, 11, 38, 0.72) 0%, rgba(56, 26, 66, 0.44) 55%, rgba(14, 7, 28, 0.86) 100%);
+}
+
+.sunset-backdrop--evening .sunset-photo {
+  filter: saturate(1.04) brightness(0.84);
+}
+
+.sunset-backdrop--evening .sunset-tint {
+  background: linear-gradient(180deg, rgba(24, 13, 44, 0.62) 0%, rgba(102, 46, 86, 0.34) 52%, rgba(18, 9, 34, 0.82) 100%);
+}
+
+.sunset-backdrop--chat .sunset-photo {
+  filter: saturate(0.88) brightness(0.58) blur(2px);
+}
+
+.sunset-backdrop--chat .sunset-tint {
+  background: linear-gradient(180deg, rgba(16, 9, 34, 0.74) 0%, rgba(34, 16, 52, 0.56) 55%, rgba(12, 6, 24, 0.88) 100%);
+}
+
+/* Brilho solar sutil ao horizonte */
+.sunset-sunflare {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 980px;
+  height: 460px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(255, 212, 121, 0.24) 0%, rgba(255, 148, 102, 0.1) 45%, transparent 72%);
+  pointer-events: none;
+  animation: sunflarePulse 9s ease-in-out infinite alternate;
+}
+
+/* Moldura externa fina estilo cartão-postal / editorial (como na referência) */
+.editorial-outer-frame {
+  position: absolute;
+  inset: 28px;
+  z-index: 4;
+  border: 1.5px solid rgba(255, 250, 244, 0.52);
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 212, 121, 0.14);
+}
+
+/* Poeira dourada / partículas suaves de fim de tarde */
+.sun-motes {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sun-mote {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 224, 150, 0.78);
+  box-shadow: 0 0 10px rgba(255, 188, 112, 0.65);
+  opacity: 0;
+  animation: moteDrift 12s linear infinite;
+}
+
+/* ============================================================================
+ *  COMPONENTES COMPARTILHADOS (CARTÕES, MOLDURAS, BARRAS E PLATAFORMAS)
+ * ============================================================================ */
+
+/* Painel Glassmorphism quente */
+.glass-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-glass);
+  border: 1.5px solid rgba(255, 250, 244, 0.28);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* Moldura arquitetônica limpa (Webcam / Painéis de Destaque) */
+.sunset-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 20px 44px rgba(8, 3, 18, 0.62),
+    0 0 28px rgba(255, 148, 102, 0.22);
+}
+
+.sunset-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.5px;
+  background: linear-gradient(135deg, rgba(255, 250, 244, 0.92) 0%, rgba(255, 212, 121, 0.82) 38%, rgba(232, 104, 120, 0.85) 75%, rgba(255, 250, 244, 0.88) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Linha interna fina de acabamento premium */
+.sunset-frame::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 250, 244, 0.26);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff5e7e;
+  box-shadow: 0 0 10px rgba(255, 94, 126, 0.8);
+  animation: liveBlink 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.live-dot--gold {
+  background: var(--sunset-gold);
+  box-shadow: 0 0 10px rgba(255, 212, 121, 0.75);
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(20, 11, 38, 0.68);
+  border: 1px solid rgba(255, 250, 244, 0.38);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sunset-gold);
+}
+
+/* Títulos editoriais nítidos (sem poluição excessiva) */
+.title-editorial {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow:
+    0 4px 26px rgba(16, 6, 32, 0.72),
+    0 1px 0 rgba(255, 212, 121, 0.22);
+}
+
+/* Ícones minimalistas das plataformas */
+.platforms-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.platform-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+
+.platform-icon svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+
+.platform-youtube .platform-icon,
+.platform-youtube.platform-icon,
+.platform-youtube .platform-pill-icon,
+.platform-youtube .social-card-icon {
+  color: var(--yt-color);
+}
+
+.platform-twitch .platform-icon,
+.platform-twitch.platform-icon,
+.platform-twitch .platform-pill-icon,
+.platform-twitch .social-card-icon {
+  color: var(--tw-color);
+}
+
+.platform-kick .platform-icon,
+.platform-kick.platform-icon,
+.platform-kick .platform-pill-icon,
+.platform-kick .social-card-icon {
+  color: var(--kick-color);
+}
+
+.social-instagram .social-pill-icon,
+.social-instagram .social-card-icon {
+  color: var(--ig-color);
+}
+
+.social-twitter .social-pill-icon,
+.social-twitter .social-card-icon {
+  color: #ffffff;
+}
+
+.social-tiktok .social-pill-icon,
+.social-tiktok .social-card-icon {
+  color: var(--sunset-aqua);
+}
+
+.social-discord .social-pill-icon,
+.social-discord .social-card-icon {
+  color: #9bb0ff;
+}
+
+.platform-pills-group,
+.social-pills-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.platform-pill,
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 250, 244, 0.16);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+}
+
+.platform-pill-icon svg,
+.social-pill-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/* Barra Inferior Padrão (Início, Pausa) */
+.bottom-bar {
+  position: absolute;
+  left: 72px;
+  bottom: 52px;
+  width: 1776px;
+  height: 74px;
+  padding: 0 28px;
+  z-index: 20;
+}
+
+.bottom-bar__brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.bottom-bar__handle {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+
+/* Guias de Alinhamento no OBS (somente quando mostrarGuiasOBS: true) */
+.obs-guide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 212, 121, 0.9);
+  border: 1.5px dashed rgba(255, 212, 121, 0.55);
+  border-radius: 10px;
+  background: rgba(16, 9, 32, 0.45);
+}
+
+.obs-guide span {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.05em;
+}
+
+body.show-obs-guides .obs-guide {
+  display: flex;
+}
+
+/* ============================================================================
+ *  ANIMAÇÕES SUAVES (GPU-ACCELERATED @ 60FPS)
+ * ============================================================================ */
+
+@keyframes sunsetBreathe {
+  0% {
+    transform: scale(1.0) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.035) translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes sunflarePulse {
+  0% {
+    opacity: 0.72;
+    transform: translateX(-50%) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+@keyframes moteDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  82% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(38px, -220px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes liveBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.42;
+    transform: scale(0.84);
+  }
+}
+
+@keyframes eqGentle {
+  0%, 100% {
+    transform: scaleY(0.32);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes progressSweep {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(340%);
+  }
+}

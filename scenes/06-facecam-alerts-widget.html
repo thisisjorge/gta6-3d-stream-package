@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>GTA 6 Stream Package - Facecam + Todos os Alertas 3D (Seguidor, Sub, Sub Gift, Bits, Donate, Raid) + Meta</title>
+  <link rel="stylesheet" href="../shared/gta6-styles.css" />
+  <style>
+    .widget-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -44%);
+      width: 820px;
+      height: 510px;
+      z-index: 10;
+    }
+
+    /* Main Rounded Webcam Frame */
+    .facecam-box {
+      position: relative;
+      width: 820px;
+      height: 510px;
+      border-radius: 34px;
+      padding: 4px;
+      background: linear-gradient(135deg, #c66cff 0%, #ff7ec8 50%, #ffb878 100%);
+      box-shadow: 0 22px 54px rgba(10, 4, 24, 0.78);
+    }
+
+    .facecam-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      background: radial-gradient(circle at 50% 42%, rgba(28, 19, 44, 0.88) 0%, rgba(16, 11, 28, 0.94) 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Footer Bar (Goal / Alert Banner) */
+    .facecam-footer {
+      position: relative;
+      width: 100%;
+      height: 98px;
+      background: linear-gradient(90deg, #b87cf8 0%, #d290df 48%, #f8c390 100%);
+      border-top: 3px solid rgba(255, 255, 255, 0.42);
+      display: flex;
+      align-items: center;
+      padding: 0 34px 0 92px;
+      overflow: hidden;
+    }
+
+    /* Subtle Palm Tree Silhouette inside Footer Right Side */
+    .footer-palm-svg {
+      position: absolute;
+      right: 14px;
+      bottom: -8px;
+      width: 180px;
+      height: 115px;
+      opacity: 0.30;
+      pointer-events: none;
+    }
+
+    /* Goal Bar Mode Content (Supports both META SEGUIDORES for new streamers & META SUBS) */
+    .subgoal-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      z-index: 5;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .subgoal-label {
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: 25px;
+      line-height: 0.94;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 8px rgba(42, 16, 68, 0.65);
+      margin-right: 20px;
+    }
+
+    .subgoal-track {
+      flex: 1;
+      height: 36px;
+      background: #140f1d;
+      border-radius: 18px;
+      padding: 3px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.78);
+    }
+
+    .subgoal-fill {
+      width: 50%;
+      height: 100%;
+      border-radius: 15px;
+      background: linear-gradient(90deg, #a3269c 0%, #e03c8a 52%, #ffae34 100%);
+      box-shadow: 0 0 14px rgba(255, 118, 172, 0.75);
+      transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .subgoal-count {
+      position: absolute;
+      right: 22px;
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+    }
+
+    /* Alert Active Banner Content */
+    .alert-row {
+      position: absolute;
+      inset: 0;
+      padding: 0 34px 0 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 6;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    body.alert-active .subgoal-row {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    body.alert-active .alert-row {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .alert-user {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.96);
+      line-height: 1;
+      text-shadow: 0 2px 6px rgba(45, 16, 70, 0.45);
+    }
+
+    .alert-action {
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: 35px;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1.05;
+      text-shadow: 0 3px 10px rgba(45, 16, 70, 0.55);
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-wrapper">
+    <div class="facecam-box">
+      <div class="facecam-inner">
+        <div class="facecam-footer">
+          <svg class="footer-palm-svg" viewBox="0 0 200 120">
+            <g fill="#5b287a">
+              <path d="M140,120 C138,85 145,55 158,32 C130,38 105,55 88,78 C108,50 132,30 158,24 C128,18 98,25 74,42 C102,16 135,8 164,16 C142,2 115,-2 88,8 C122,-8 156,-4 176,12 C186,-2 198,-6 210,0 C192,12 182,24 176,34 C195,30 210,36 220,48 C198,46 182,48 170,56 C160,78 156,98 156,120 Z"/>
+            </g>
+          </svg>
+
+          <!-- Goal State (Follower Goal or Sub Goal) -->
+          <div class="subgoal-row">
+            <div id="sub-label" class="subgoal-label">META<br/>SUBS</div>
+            <div class="subgoal-track">
+              <div id="sub-fill" class="subgoal-fill"></div>
+              <div id="sub-text" class="subgoal-count">50/100</div>
+            </div>
+          </div>
+
+          <!-- Active Alert State -->
+          <div class="alert-row">
+            <div id="alert-user" class="alert-user">apenasojorge</div>
+            <div id="alert-action" class="alert-action">DOOU R$ 100</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="webgl" class="webgl-layer"></canvas>
+
+  <script src="../shared/three.min.js"></script>
+  <script src="../shared/gta6-3d-engine.js"></script>
+  <script src="../shared/gta6-typography.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = GTA6Typography.getLang();
+    const mode = params.get('mode') || 'subgoal'; // 'subgoal', 'followgoal', 'alert'
+    let currentAlertType = params.get('alertType') || 'donate'; // 'follow', 'sub', 'subgift', 'bits', 'donate', 'raid'
+    const showTopIcons = params.get('icons') === '1' || mode === 'alert' || mode === 'showcase';
+
+    // Default presets for all 6 Alert Types (PT-BR & EN) â€” Customized for @apenasojorge
+    const ALERT_PRESETS = {
+      pt: {
+        follow:  { user: 'LuciaVice',      action: 'SEGUE @APENASOJORGE!',   icon: 'user'    },
+        sub:     { user: 'JasonLeonida',   action: 'NOVO SUB DO JORGE!',     icon: 'star'    },
+        subgift: { user: 'ReiDeLeonida',   action: 'DEU 5 SUBS DE PRESENTE!',icon: 'gift'    },
+        bits:    { user: 'TropaDoJorge',   action: 'ENVIOU 1.000 BITS!',     icon: 'diamond' },
+        donate:  { user: 'apenasojorge',   action: 'DOOU R$ 100',            icon: 'dollar'  },
+        raid:    { user: 'OceanDriveBR',   action: 'FEZ UMA RAID (250)!',    icon: 'bolt'    }
+      },
+      en: {
+        follow:  { user: 'LuciaVice',      action: 'NEW FOLLOWER!',          icon: 'user'    },
+        sub:     { user: 'JasonLeonida',   action: 'NEW SUBSCRIBER!',        icon: 'star'    },
+        subgift: { user: 'LeonidaKing',    action: 'GIFTED 5 SUBS!',         icon: 'gift'    },
+        bits:    { user: 'ViceSquad',      action: 'CHEERED 1,000 BITS!',    icon: 'diamond' },
+        donate:  { user: 'apenasojorge',   action: 'DONATED 100$',           icon: 'dollar'  },
+        raid:    { user: 'OceanDrive99',   action: 'RAIDED WITH 250!',       icon: 'bolt'    }
+      }
+    };
+
+    const goalType = params.get('goal') || (mode === 'followgoal' ? 'follows' : 'subs');
+    if (lang === 'en') {
+      document.getElementById('sub-label').innerHTML = goalType === 'follows' ? 'FOLLOW<br/>GOAL' : 'SUB<br/>GOAL';
+    } else {
+      document.getElementById('sub-label').innerHTML = goalType === 'follows' ? 'META<br/>SEGUIDORES' : 'META<br/>SUBS';
+    }
+
+    if (params.get('transparent') === '1') {
+      document.querySelector('.facecam-inner').style.background = 'transparent';
+    }
+
+    function applyAlertPreset(type, customUser, customAction) {
+      currentAlertType = type;
+      const preset = (ALERT_PRESETS[lang] || ALERT_PRESETS.pt)[type] || ALERT_PRESETS.pt.donate;
+      document.getElementById('alert-user').textContent = customUser || params.get('user') || preset.user;
+      document.getElementById('alert-action').textContent = customAction || params.get('action') || preset.action;
+    }
+
+    applyAlertPreset(currentAlertType);
+
+    if (mode === 'alert') {
+      document.body.classList.add('alert-active');
+    }
+
+    if (params.has('subs')) {
+      const [cur, max] = params.get('subs').split('/').map(Number);
+      document.getElementById('sub-text').textContent = `${cur}/${max}`;
+      document.getElementById('sub-fill').style.width = `${Math.min(100, Math.round((cur / max) * 100))}%`;
+    }
+
+    const canvas = document.getElementById('webgl');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    GTA6Engine.configureRenderer(renderer);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1920 / 1080, 0.1, 100);
+    camera.position.set(0, 0, 15);
+
+    GTA6Engine.setupViceLighting(scene, 'purple');
+    const envMap = GTA6Engine.getStudioEnvMap(renderer, 'purple');
+    const goldEnv = GTA6Engine.getStudioEnvMap(renderer, 'gold');
+
+    // 1. Top-Left Corner 3D Handcuffs on Facecam Border (Seamless, no protruding tail!)
+    const cornerCuffs = GTA6Engine.createHandcuffs({ envMap });
+    cornerCuffs.scale.set(0.28, 0.28, 0.28);
+    cornerCuffs.position.set(-3.32, 2.26, 1.5);
+    scene.add(cornerCuffs);
+
+    // 2. Top-Center Mini 3D Cash Stack on Facecam Top Border
+    const topCash = GTA6Engine.createCashStack({ envMap });
+    topCash.scale.set(0.18, 0.18, 0.18);
+    topCash.position.set(0.0, 2.34, 1.5);
+    scene.add(topCash);
+
+    // 3. Bottom-Right Corner 3D Pistol on Facecam Border
+    const cornerPistol = GTA6Engine.createPistol({ variant: 'bronze', envMap: goldEnv });
+    cornerPistol.scale.set(0.29, 0.29, 0.29);
+    cornerPistol.position.set(3.36, -0.62, 1.8);
+    scene.add(cornerPistol);
+
+    // 4. Bottom-Left Footer 3D Icons for EVERY Alert Type + Goal Modes!
+    const footerIcons = {
+      goalStar:   GTA6Engine.createStar3D({ outerRadius: 0.36, innerRadius: 0.15, depth: 0.13, envMap: goldEnv }),
+      goalFollow: GTA6Engine.createAlertIcon3D('user', envMap),
+      follow:     GTA6Engine.createAlertIcon3D('user', envMap),
+      sub:        GTA6Engine.createStar3D({ outerRadius: 0.38, innerRadius: 0.16, depth: 0.14, envMap: goldEnv }),
+      subgift:    GTA6Engine.createAlertIcon3D('gift', envMap),
+      bits:       GTA6Engine.createAlertIcon3D('diamond', goldEnv),
+      donate:     GTA6Engine.createAlertIcon3D('dollar', envMap),
+      raid:       GTA6Engine.createAlertIcon3D('bolt', goldEnv)
+    };
+
+    Object.entries(footerIcons).forEach(([key, mesh]) => {
+      if (key !== 'goalStar' && key !== 'sub') {
+        mesh.scale.set(0.42, 0.42, 0.42);
+      }
+      mesh.position.set(-2.98, -1.52, 1.6);
+      mesh.visible = false;
+      scene.add(mesh);
+    });
+
+    // 5. Center Spinning 3D "J" Fiery Plasma Alert Orb for @apenasojorge (Visible during any active alert)
+    const alertCoin = GTA6Engine.createAlertCoin3D(params.get('letter') || 'J', goldEnv);
+    alertCoin.scale.set(0.92, 0.92, 0.92);
+    alertCoin.position.set(0.0, 0.56, 1.8);
+    scene.add(alertCoin);
+
+    // 6. Row of 6 Floating 3D Alert Icons Above Facecam (Gift, Diamond, Star, $, Bolt, User)
+    const iconTypes = ['gift', 'diamond', 'star', 'dollar', 'bolt', 'user'];
+    const topIcons = [];
+    iconTypes.forEach((type, idx) => {
+      const iconMesh = GTA6Engine.createAlertIcon3D(type, idx % 2 === 1 ? goldEnv : envMap);
+      iconMesh.scale.set(0.58, 0.58, 0.58);
+      const xPos = -3.35 + idx * 1.34;
+      iconMesh.position.set(xPos, 3.28, 1.5);
+      iconMesh.visible = showTopIcons;
+      scene.add(iconMesh);
+      topIcons.push(iconMesh);
+    });
+
+    // Public API to trigger ANY alert type live (Follow, Sub, Sub Gift, Bits, Donate/PIX, Raid)
+    window.triggerGTA6Alert = function(type = 'donate', customUser, customAction) {
+      applyAlertPreset(type, customUser, customAction);
+      document.body.classList.add('alert-active');
+      if (window._alertTimer) clearTimeout(window._alertTimer);
+      window._alertTimer = setTimeout(() => {
+        if (mode !== 'alert') document.body.classList.remove('alert-active');
+      }, 6000);
+    };
+
+    // Listen for postMessage from Master Control Hub so user can test alerts with 1 click
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'TRIGGER_ALERT') {
+        window.triggerGTA6Alert(e.data.alertType, e.data.user, e.data.action);
+      }
+    });
+
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      const isAlert = document.body.classList.contains('alert-active');
+
+      cornerCuffs.rotation.set(0.3, 0.25 + Math.sin(t * 1.2) * 0.12, 0.45);
+      topCash.rotation.set(0.75, Math.sin(t * 1.1) * 0.2, 0.25);
+      cornerPistol.rotation.set(0.25, Math.PI + 0.2 + Math.cos(t * 1.1) * 0.1, 0.55);
+
+      // Show only the matching 3D icon in the bottom-left footer
+      Object.values(footerIcons).forEach(m => { m.visible = false; });
+      const activeFooterMesh = isAlert
+        ? (footerIcons[currentAlertType] || footerIcons.donate)
+        : (goalType === 'follows' ? footerIcons.goalFollow : footerIcons.goalStar);
+
+      activeFooterMesh.visible = true;
+      activeFooterMesh.rotation.y = Math.sin(t * 2.0) * 0.42;
+
+      alertCoin.visible = isAlert;
+      if (isAlert) {
+        alertCoin.rotation.y = Math.sin(t * 1.6) * 0.42;
+        alertCoin.position.y = 0.56 + Math.sin(t * 2.2) * 0.06;
+      }
+
+      // Highlight the matching top floating 3D icon during an active alert
+      const activePreset = (ALERT_PRESETS[lang] || ALERT_PRESETS.pt)[currentAlertType] || ALERT_PRESETS.pt.donate;
+      topIcons.forEach((ic, idx) => {
+        if (!ic.visible) return;
+        const isCurrentType = isAlert && iconTypes[idx] === activePreset.icon;
+        const targetScale = isCurrentType ? 0.74 : 0.58;
+        ic.scale.setScalar(targetScale);
+        ic.position.y = 3.28 + Math.sin(t * 1.8 + idx * 0.7) * 0.08 + (isCurrentType ? 0.12 : 0);
+        ic.rotation.y = Math.sin(t * 1.2 + idx * 0.5) * 0.45;
+      });
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
+
