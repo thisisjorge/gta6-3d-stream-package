@@ -66,13 +66,14 @@ window.STREAM_CONFIG = {
 
   // 5. REDES SOCIAIS COMPLEMENTARES (Preencha se quiser exibir na barra inferior)
   redesSociais: {
-    instagram: "@apenasojorge",
+    instagram: "",
     twitter:   "",
-    tiktok:    "@apenasojorge",
+    tiktok:    "@livesjorge",
     discord:   ""
   },
 
-  // 6. WIDGET OFICIAL DO LIVEPIX (@apenasojorge)
+  // 6. CANAL DA TWITCH PARA SINCRONIZAR CHAT & EVENTOS EM TEMPO REAL + WIDGET LIVEPIX
+  twitchChannel: "apenasojorge",
   livepixWidgetUrl: "https://widget.livepix.gg/embed/bba99ac8-999e-4bf3-898f-17815c347686"
 };
 

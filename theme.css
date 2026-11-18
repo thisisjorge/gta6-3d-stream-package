@@ -196,6 +196,18 @@ body {
   box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
+/* Na barra inferior, agrupa as plataformas e o TikTok mais próximos e harmoniosos */
+.bottom-bar.glass-bar,
+.chat-footer.glass-bar {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+.bottom-bar.glass-bar .platform-pills-group,
+.chat-footer.glass-bar .platform-pills-group {
+  margin-left: auto;
+}
+
 /* Moldura arquitetônica limpa (Webcam / Painéis de Destaque) */
 .sunset-frame {
   position: relative;

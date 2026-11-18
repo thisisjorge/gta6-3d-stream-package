@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
-  <title>Cena InÃ­cio â€” A Live JÃ¡ Vai ComeÃ§ar</title>
+  <title>Cena Início — A Live Já Vai Começar</title>
   <link rel="stylesheet" href="theme.css" />
   <style>
     .inicio-hero {
@@ -54,7 +54,7 @@
       text-shadow: 0 2px 12px rgba(14, 6, 28, 0.85);
     }
 
-    /* Card do CronÃ´metro Regressivo */
+    /* Card do Cronômetro Regressivo */
     .timer-box {
       margin-top: 26px;
       width: 460px;
@@ -135,10 +135,10 @@
       <div class="editorial-outer-frame"></div>
     </div>
 
-    <!-- Camada 3D Flutuante GTA 6 (Algemas, Glock, MaÃ§os de $100 e 6 Estrelas) -->
+    <!-- Camada 3D Flutuante GTA 6 (Algemas, Glock, Maços de $100 e 6 Estrelas) -->
     <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:12;"></canvas>
 
-    <!-- ConteÃºdo Central -->
+    <!-- Conteúdo Central -->
     <section class="inicio-hero">
       <video class="gta6-logo-video" src="assets/gta6-logo-15s.webm" poster="assets/gta6-logo-static.png" autoplay loop muted playsinline></video>
       <div id="wantedStarsTop" style="margin-bottom:10px;"></div>
@@ -148,7 +148,7 @@
       </div>
 
       <h1 class="inicio-title title-editorial" data-config="tituloInicio">
-        A LIVE JÃ VAI COMEÃ‡AR
+        A LIVE JÁ VAI COMEÇAR
       </h1>
 
       <p class="inicio-subtitle" data-config="subtituloInicio">
@@ -270,7 +270,7 @@
       function renderTimer() {
         if (remaining <= 0) {
           timerLabel.textContent = "NO AR";
-          timerDisplay.textContent = cfg.textoTimerZerado || "COMEÃ‡ANDO AGORA";
+          timerDisplay.textContent = cfg.textoTimerZerado || "COMEÇANDO AGORA";
           timerDisplay.classList.add("timer-finished");
           timerProgress.style.transform = "scaleX(0)";
           return;

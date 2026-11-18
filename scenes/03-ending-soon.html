@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
     <div class="title-container">
       <div id="stars-mount" class="stars-top"></div>
       <h1 id="main-title" class="gta-title">encerrando</h1>
-      <div id="sub-title" class="gta-script script-sub">Obrigado Pela PresenÃ§a</div>
+      <div id="sub-title" class="gta-script script-sub">Obrigado Pela Presença</div>
     </div>
     <div id="countdown" class="gta-timer timer-bottom">09:58</div>
   </div>
@@ -54,7 +54,7 @@
       document.getElementById('sub-title').textContent = 'Stream Is Currently';
     } else {
       document.getElementById('main-title').textContent = params.get('title') || 'encerrando';
-      document.getElementById('sub-title').textContent = params.get('sub') || 'Obrigado Pela PresenÃ§a';
+      document.getElementById('sub-title').textContent = params.get('sub') || 'Obrigado Pela Presença';
     }
 
     document.getElementById('stars-mount').innerHTML = GTA6Typography.createWantedStarsHTML(6, 36);

@@ -96,7 +96,7 @@
         {
             "prev_ver": 536870916,
             "name": "Início",
-            "uuid": "6c1e4ca9-0706-4184-84cf-7bac2baad9a5",
+            "uuid": "8e8eb7a0-6127-4066-932b-b134c052b952",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -105,7 +105,7 @@
                 "items": [
                     {
                         "name": "Overlay Início 3D",
-                        "source_uuid": "4cf91940-876e-4761-9442-b27c6c83874f",
+                        "source_uuid": "47e4bddf-bdde-48d8-8670-4408db3df4ab",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -128,8 +128,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -160,7 +160,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -183,8 +183,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -215,7 +215,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -238,8 +238,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -293,7 +293,7 @@
         {
             "prev_ver": 536870916,
             "name": "Só Chat",
-            "uuid": "59322db9-9298-4b45-91bc-fce27bdf9c93",
+            "uuid": "0b7fbe4b-011e-48cd-ac4f-920733960367",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -325,8 +325,8 @@
                             "y": 132
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.6814814814814816,
+                            "y": -0.7555555555555555
                         },
                         "scale": {
                             "x": 1,
@@ -341,8 +341,8 @@
                             "y": 720
                         },
                         "bounds_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 2.3703703703703702,
+                            "y": 1.3333333333333333
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -357,7 +357,7 @@
                     },
                     {
                         "name": "Overlay Só Chat 3D",
-                        "source_uuid": "ec2b865b-83fe-4c7a-b607-4c6c7f0f5a41",
+                        "source_uuid": "b9fb3af9-8135-4026-b372-dee5050632ca",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -380,8 +380,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -412,7 +412,7 @@
                     },
                     {
                         "name": "chat",
-                        "source_uuid": "72c50ef0-5c91-40a6-aea3-fffa66a89438",
+                        "source_uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -435,12 +435,12 @@
                             "y": 196
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 0.7703703703703704,
+                            "y": -0.6370370370370371
                         },
                         "scale": {
-                            "x": 0.7,
-                            "y": 0.7
+                            "x": 1,
+                            "y": 1
                         },
                         "scale_rel": {
                             "x": 1,
@@ -467,7 +467,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -490,8 +490,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -522,7 +522,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -545,8 +545,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -600,7 +600,7 @@
         {
             "prev_ver": 536870916,
             "name": "Gameplay",
-            "uuid": "9e7b781e-c149-47c9-b451-b30d57c1c9a1",
+            "uuid": "c4b8b526-8ba4-4772-9cdf-3c73fefbfb92",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -632,8 +632,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -664,7 +664,7 @@
                     },
                     {
                         "name": "Captura de Jogo (GTA 6 / Fullscreen)",
-                        "source_uuid": "ae0a88fc-6b57-4e10-b0de-3d7c562a212a",
+                        "source_uuid": "7dd2d569-758f-43fe-bd43-c398ab4f44f8",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -687,8 +687,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -742,8 +742,8 @@
                             "y": 304
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7037037037037037,
+                            "y": -0.43703703703703706
                         },
                         "scale": {
                             "x": 1,
@@ -758,8 +758,8 @@
                             "y": 234
                         },
                         "bounds_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 0.7703703703703704,
+                            "y": 0.43333333333333335
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -774,7 +774,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "0890fd30-2343-4080-9cd8-97a1a5f610b1",
+                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -797,8 +797,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -829,7 +829,7 @@
                     },
                     {
                         "name": "chat",
-                        "source_uuid": "72c50ef0-5c91-40a6-aea3-fffa66a89438",
+                        "source_uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -849,19 +849,19 @@
                         "group_item_backup": false,
                         "pos": {
                             "x": 36,
-                            "y": 615
+                            "y": 32
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.711111111111111,
+                            "y": -0.9407407407407408
                         },
                         "scale": {
-                            "x": 0.62,
-                            "y": 0.62
+                            "x": 0.89,
+                            "y": 0.38
                         },
                         "scale_rel": {
-                            "x": 1,
-                            "y": 1
+                            "x": 0.89,
+                            "y": 0.38
                         },
                         "bounds": {
                             "x": 0,
@@ -884,7 +884,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -907,8 +907,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -939,7 +939,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -962,8 +962,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -994,7 +994,7 @@
                     },
                     {
                         "name": "Missão Concluída 3D (Ativar ao vencer)",
-                        "source_uuid": "b2b612c3-2120-4f11-a8d6-222f4f4c024f",
+                        "source_uuid": "5c3e3f23-6a86-4de6-8d51-eccbcb19b35f",
                         "visible": false,
                         "locked": false,
                         "rot": 0,
@@ -1017,8 +1017,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1072,7 +1072,7 @@
         {
             "prev_ver": 536870916,
             "name": "Pausa",
-            "uuid": "d1f2d0cc-8582-4ad4-9d5e-8c35270008d4",
+            "uuid": "dbd313a7-eeaa-4a9e-9826-ea1bb1417056",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1081,7 +1081,7 @@
                 "items": [
                     {
                         "name": "Overlay Pausa 3D",
-                        "source_uuid": "2cdf9433-019d-47e5-8bf7-e2fe0306536f",
+                        "source_uuid": "77f609ad-7210-4751-9cbf-273c015c68c8",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1104,8 +1104,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1136,7 +1136,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1159,8 +1159,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1191,7 +1191,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1214,8 +1214,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1269,7 +1269,7 @@
         {
             "prev_ver": 536870916,
             "name": "Fim",
-            "uuid": "7ad9607f-d53c-4fa8-ab2b-b06db184d6b8",
+            "uuid": "a617bd2e-b4e4-4a31-abab-a145ef907349",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1278,7 +1278,7 @@
                 "items": [
                     {
                         "name": "Overlay Fim 3D",
-                        "source_uuid": "4028a1c3-074d-4b2f-a5d1-d2bf0988bc15",
+                        "source_uuid": "0cc92769-b95f-4057-ab26-206a9014099a",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1301,8 +1301,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1333,7 +1333,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1356,8 +1356,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1411,7 +1411,7 @@
         {
             "prev_ver": 536870916,
             "name": "Web Cam",
-            "uuid": "89a137bf-77f0-47c6-9b80-9f69525cd98e",
+            "uuid": "c6a8cd00-c71a-4889-9f70-3c3e8a3d6edb",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1443,8 +1443,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1459,8 +1459,8 @@
                             "y": 1080
                         },
                         "bounds_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 3.5555555555555554,
+                            "y": 2
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -1475,7 +1475,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1498,8 +1498,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1530,7 +1530,7 @@
                     },
                     {
                         "name": "livepix",
-                        "source_uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+                        "source_uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1553,8 +1553,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1608,7 +1608,7 @@
         {
             "prev_ver": 536870916,
             "name": "Desktop",
-            "uuid": "5e7db437-bfa5-4b1e-ad4d-65b8f842a825",
+            "uuid": "8b9c5ab4-7c51-4d3b-a614-f99289b1d24d",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1640,8 +1640,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1695,8 +1695,8 @@
                             "y": 304
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7037037037037037,
+                            "y": -0.43703703703703706
                         },
                         "scale": {
                             "x": 1,
@@ -1711,8 +1711,8 @@
                             "y": 234
                         },
                         "bounds_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 0.7703703703703704,
+                            "y": 0.43333333333333335
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -1727,7 +1727,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "0890fd30-2343-4080-9cd8-97a1a5f610b1",
+                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1750,8 +1750,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1782,7 +1782,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -1805,8 +1805,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -1860,7 +1860,7 @@
         {
             "prev_ver": 536870916,
             "name": "Vídeo",
-            "uuid": "411408cf-48db-4b38-948f-8533b1f5e2bc",
+            "uuid": "2b3c4c30-8a2f-4a34-92aa-c78e2bf83829",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
@@ -1892,8 +1892,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -1947,8 +1947,8 @@
                             "y": 304
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7037037037037037,
+                            "y": -0.43703703703703706
                         },
                         "scale": {
                             "x": 1,
@@ -1963,8 +1963,8 @@
                             "y": 234
                         },
                         "bounds_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": 0.7703703703703704,
+                            "y": 0.43333333333333335
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -1979,7 +1979,7 @@
                     },
                     {
                         "name": "Overlay Gameplay 3D",
-                        "source_uuid": "0890fd30-2343-4080-9cd8-97a1a5f610b1",
+                        "source_uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -2002,8 +2002,8 @@
                             "y": 0
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -1.7777777777777777,
+                            "y": -1
                         },
                         "scale": {
                             "x": 1,
@@ -2034,7 +2034,7 @@
                     },
                     {
                         "name": "alerts",
-                        "source_uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+                        "source_uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
                         "visible": true,
                         "locked": true,
                         "rot": 0,
@@ -2057,8 +2057,8 @@
                             "y": 20
                         },
                         "pos_rel": {
-                            "x": 0,
-                            "y": 0
+                            "x": -0.7592592592592593,
+                            "y": -0.9629629629629629
                         },
                         "scale": {
                             "x": 1,
@@ -2166,7 +2166,7 @@
         {
             "prev_ver": 536870916,
             "name": "Captura de Jogo (GTA 6 / Fullscreen)",
-            "uuid": "ae0a88fc-6b57-4e10-b0de-3d7c562a212a",
+            "uuid": "7dd2d569-758f-43fe-bd43-c398ab4f44f8",
             "id": "game_capture",
             "versioned_id": "game_capture",
             "settings": {
@@ -2192,7 +2192,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Início 3D",
-            "uuid": "4cf91940-876e-4761-9442-b27c6c83874f",
+            "uuid": "47e4bddf-bdde-48d8-8670-4408db3df4ab",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2227,7 +2227,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Só Chat 3D",
-            "uuid": "ec2b865b-83fe-4c7a-b607-4c6c7f0f5a41",
+            "uuid": "b9fb3af9-8135-4026-b372-dee5050632ca",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2262,7 +2262,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Gameplay 3D",
-            "uuid": "0890fd30-2343-4080-9cd8-97a1a5f610b1",
+            "uuid": "1c85bd84-a466-4b8d-8566-092efa755996",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2297,7 +2297,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Pausa 3D",
-            "uuid": "2cdf9433-019d-47e5-8bf7-e2fe0306536f",
+            "uuid": "77f609ad-7210-4751-9cbf-273c015c68c8",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2332,7 +2332,7 @@
         {
             "prev_ver": 536870916,
             "name": "Overlay Fim 3D",
-            "uuid": "4028a1c3-074d-4b2f-a5d1-d2bf0988bc15",
+            "uuid": "0cc92769-b95f-4057-ab26-206a9014099a",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2367,7 +2367,7 @@
         {
             "prev_ver": 536870916,
             "name": "Missão Concluída 3D (Ativar ao vencer)",
-            "uuid": "b2b612c3-2120-4f11-a8d6-222f4f4c024f",
+            "uuid": "5c3e3f23-6a86-4de6-8d51-eccbcb19b35f",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2402,7 +2402,7 @@
         {
             "prev_ver": 536870916,
             "name": "alerts",
-            "uuid": "c96b761f-e96e-49b2-9cc3-4b83d9013d0c",
+            "uuid": "cb3c3802-29eb-47d1-ad54-0d79dccbb1e1",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2437,7 +2437,7 @@
         {
             "prev_ver": 536870916,
             "name": "livepix",
-            "uuid": "9a067719-92e3-4f8a-bdb6-0feea958df90",
+            "uuid": "5654a405-4d86-4c3a-9799-de312eafe231",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
@@ -2473,14 +2473,14 @@
         {
             "prev_ver": 536870916,
             "name": "chat",
-            "uuid": "72c50ef0-5c91-40a6-aea3-fffa66a89438",
+            "uuid": "2909bdb0-22bb-4e01-9d88-8501ba89177f",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
                 "local_file": "D:/organizador financeiro/gta6-3d-stream-package/scenes/07-chat-widget.html",
-                "width": 680,
-                "height": 320,
+                "width": 476,
+                "height": 640,
                 "fps": 60,
                 "fps_custom": true,
                 "reroute_audio": false,
@@ -2508,7 +2508,7 @@
         {
             "prev_ver": 536870916,
             "name": "Transição Stinger (@apenasojorge)",
-            "uuid": "603e0199-4b3e-4f06-8416-7994c38d24fe",
+            "uuid": "0d679401-5aac-4f24-abdc-cefe4111e717",
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {

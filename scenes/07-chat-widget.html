@@ -2,73 +2,85 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>GTA 6 Stream Package - Chat Widget Animado</title>
+  <title>GTA 6 Stream Package - Chat Widget ao Vivo (Twitch IRC @apenasojorge)</title>
   <link rel="stylesheet" href="../shared/gta6-styles.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent !important;
+      overflow: hidden;
+      font-family: 'Poppins', 'Rajdhani', sans-serif;
+    }
+
     .chat-container {
       position: absolute;
-      bottom: 65px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 680px;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
       z-index: 20;
     }
 
     .chat-pill {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 13px 24px;
-      border-radius: 16px;
-      background: linear-gradient(90deg, rgba(24, 15, 38, 0.90) 0%, rgba(44, 24, 64, 0.86) 100%);
-      border: 2px solid rgba(198, 108, 255, 0.6);
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, rgba(20, 11, 36, 0.90) 0%, rgba(38, 19, 58, 0.86) 100%);
+      border: 1.5px solid rgba(255, 180, 120, 0.45);
       box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.72),
-        inset 0 0 18px rgba(214, 110, 255, 0.22);
+        0 8px 22px rgba(0, 0, 0, 0.68),
+        inset 0 0 14px rgba(255, 148, 102, 0.14);
       color: #ffffff;
-      font-size: 21px;
-      animation: chatSlideIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      font-size: 16px;
+      line-height: 1.3;
+      animation: chatSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     .chat-badge {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 12px;
       flex-shrink: 0;
     }
 
-    .badge-star {
-      background: linear-gradient(135deg, #b24dff, #ff62c6);
-      box-shadow: 0 0 10px rgba(210, 95, 255, 0.65);
+    .badge-twitch {
+      background: linear-gradient(135deg, #9146ff, #c66cff);
+      box-shadow: 0 0 8px rgba(145, 70, 255, 0.65);
     }
 
     .badge-crown {
       background: linear-gradient(135deg, #ffb838, #ff6b4a);
-      box-shadow: 0 0 10px rgba(255, 168, 64, 0.65);
+      box-shadow: 0 0 8px rgba(255, 168, 64, 0.65);
     }
 
     .chat-username {
       font-weight: 700;
-      color: #f3a6ff;
-      letter-spacing: 0.4px;
+      color: #ffd479;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
     }
 
     .chat-message {
-      color: #f4eef8;
-      font-weight: 600;
+      color: #ffffff;
+      font-weight: 500;
+      word-break: break-word;
     }
 
     @keyframes chatSlideIn {
       from {
         opacity: 0;
-        transform: translateY(18px) scale(0.97);
+        transform: translateY(14px) scale(0.97);
       }
       to {
         opacity: 1;
@@ -78,46 +90,97 @@
   </style>
 </head>
 <body>
-  <div id="chat-feed" class="chat-container">
-    <div class="chat-pill">
-      <span class="chat-badge badge-star">★</span>
-      <span class="chat-username">LuciaVice:</span>
-      <span class="chat-message">A live do @apenasojorge tá insana demais!! 🔥🌴</span>
-    </div>
-    <div class="chat-pill">
-      <span class="chat-badge badge-crown">♛</span>
-      <span class="chat-username">JasonLeonida:</span>
-      <span class="chat-message">Os reflexos 3D nas algemas e na Glock tão perfeitos 🔥</span>
-    </div>
-  </div>
+  <div id="chat-feed" class="chat-container"></div>
 
   <script>
-    const sampleMessages = [
-      { badge: '★', cls: 'badge-star', user: 'TropaDoJorge:', text: 'Já segui o @apenasojorge na Twitch! Bora bater a meta! 🚀' },
-      { badge: '♛', cls: 'badge-crown', user: 'ReiDeLeonida:', text: 'Mandou 5 Subs de presente pro canal do Jorge! 🎁💸' },
-      { badge: '★', cls: 'badge-star', user: 'NoiteEmMiami:', text: 'Essa animação 3D de Missão Concluída ficou absurda 🔥' },
-      { badge: '♛', cls: 'badge-crown', user: 'OceanDriveBR:', text: 'Raid de 250 pessoas chegando na live do @apenasojorge!! ⚡' }
-    ];
-
-    let idx = 0;
-    const feed = document.getElementById('chat-feed');
     const params = new URLSearchParams(window.location.search);
-    if (params.get('demo') !== '0') {
-      setInterval(() => {
-        const msg = sampleMessages[idx % sampleMessages.length];
-        idx++;
-        const row = document.createElement('div');
-        row.className = 'chat-pill';
-        row.innerHTML = `
-          <span class="chat-badge ${msg.cls}">${msg.badge}</span>
-          <span class="chat-username">${msg.user}</span>
-          <span class="chat-message">${msg.text}</span>
-        `;
-        feed.appendChild(row);
-        if (feed.children.length > 3) {
-          feed.removeChild(feed.firstElementChild);
+    const CHANNEL = (params.get('channel') || 'apenasojorge').toLowerCase().replace(/^@/, '');
+    const MAX_MESSAGES = Number(params.get('max')) || 6;
+    const DEMO_MODE = params.get('demo') === '1';
+    const feed = document.getElementById('chat-feed');
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function addChatMessage(username, text, color, isModOrBroadcaster = false) {
+      const row = document.createElement('div');
+      row.className = 'chat-pill';
+      const badgeCls = isModOrBroadcaster ? 'badge-crown' : 'badge-twitch';
+      const badgeIcon = isModOrBroadcaster ? '♛' : '★';
+      const nameColor = color || (isModOrBroadcaster ? '#ffd479' : '#f3a6ff');
+
+      row.innerHTML = `
+        <span class="chat-badge ${badgeCls}">${badgeIcon}</span>
+        <span class="chat-username" style="color:${nameColor}">${escapeHtml(username)}:</span>
+        <span class="chat-message">${escapeHtml(text)}</span>
+      `;
+      feed.appendChild(row);
+      while (feed.children.length > MAX_MESSAGES) {
+        feed.removeChild(feed.firstElementChild);
+      }
+    }
+
+    // Connect directly to Real-Time Twitch IRC WebSocket for @apenasojorge (Zero Login Required!)
+    function connectTwitchIRC() {
+      const ws = new WebSocket('wss://irc-ws.chat.twitch.tv:443');
+
+      ws.onopen = () => {
+        ws.send('CAP REQ :twitch.tv/tags twitch.tv/commands');
+        ws.send('PASS SCHMOOPIIE');
+        ws.send('NICK justinfan' + Math.floor(10000 + Math.random() * 89999));
+        ws.send('JOIN #' + CHANNEL);
+      };
+
+      ws.onmessage = (event) => {
+        const lines = String(event.data || '').split('\r\n');
+        for (const line of lines) {
+          if (!line) continue;
+          if (line.startsWith('PING')) {
+            ws.send('PONG :tmi.twitch.tv');
+            continue;
+          }
+          if (line.includes('PRIVMSG #' + CHANNEL + ' :')) {
+            let displayName = 'Viewer';
+            let color = '';
+            let isVip = false;
+
+            const nameMatch = line.match(/display-name=([^;]+)/);
+            if (nameMatch && nameMatch[1]) displayName = nameMatch[1];
+            else {
+              const nickMatch = line.match(/:([^!]+)!/);
+              if (nickMatch) displayName = nickMatch[1];
+            }
+
+            const colorMatch = line.match(/color=(#[0-9A-Fa-f]{6})/);
+            if (colorMatch) color = colorMatch[1];
+
+            if (line.includes('broadcaster/1') || line.includes('moderator/1') || line.includes('vip/1') || line.includes('subscriber/')) {
+              isVip = true;
+            }
+
+            const msgPart = line.split('PRIVMSG #' + CHANNEL + ' :')[1];
+            if (msgPart) {
+              addChatMessage(displayName, msgPart, color, isVip);
+            }
+          }
         }
-      }, 3200);
+      };
+
+      ws.onclose = () => {
+        setTimeout(connectTwitchIRC, 3000);
+      };
+    }
+
+    connectTwitchIRC();
+
+    // Only show demo messages if ?demo=1 is explicitly passed (for screenshots/previews)
+    if (DEMO_MODE) {
+      addChatMessage('apenasojorge', 'Chat ao vivo da Twitch sincronizado na tela! 🔥🌴', '#ffd479', true);
+      addChatMessage('LuciaVice', 'Salve Jorge! O overlay novo tá muito limpo!', '#f3a6ff', false);
     }
   </script>
 </body>

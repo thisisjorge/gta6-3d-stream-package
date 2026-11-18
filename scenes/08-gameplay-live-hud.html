@@ -21,13 +21,11 @@
 
     .hud-chat-frame {
       position: absolute;
-      top: 50px;
-      left: -355px;
-      width: 1920px;
-      height: 1080px;
+      top: 480px;
+      left: 52px;
+      width: 476px;
+      height: 480px;
       border: none;
-      transform: scale(0.66);
-      transform-origin: top left;
       z-index: 15;
       pointer-events: none;
     }
@@ -62,8 +60,8 @@
     const alertType = params.get('alertType') || 'donate';
     const goal = params.get('goal') || 'follows';
 
-    document.getElementById('cam-frame').src = `06-facecam-alerts-widget.html?mode=${mode}&alertType=${alertType}&goal=${goal}&icons=1&transparent=${transparent}&lang=${lang}`;
-    document.getElementById('chat-frame').src = `07-chat-widget.html?lang=${lang}`;
+    document.getElementById('cam-frame').src = `06-facecam-alerts-widget.html?mode=${mode}&alertType=${alertType}&goal=${goal}&transparent=${transparent}&lang=${lang}`;
+    document.getElementById('chat-frame').src = `07-chat-widget.html?demo=1&lang=${lang}`;
     document.getElementById('mission-frame').src = `05-mission-completed.html?lang=${lang}`;
 
     // Forward alert triggers from Master Control Hub to Facecam iframe

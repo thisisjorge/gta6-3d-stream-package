@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
-  <title>Cena SÃ³ Chat â€” Miami Sunset</title>
+  <title>Cena Só Chat — Miami Sunset</title>
   <link rel="stylesheet" href="theme.css" />
   <style>
     /* Fundo transparente na raiz para permitir o recorte vazado da webcam no OBS */
@@ -13,7 +13,7 @@
       background: transparent !important;
     }
 
-    /* Recorta um vÃ£o 100% transparente (1272x712 com cantos arredondados) na Ã¡rea da cÃ¢mera */
+    /* Recorta um vão 100% transparente (1272x712 com cantos arredondados) na área da câmera */
     .sunset-backdrop.has-webcam-cutout {
       -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3Cmask id='camHole'%3E%3Crect width='1920' height='1080' fill='white'/%3E%3Crect x='56' y='136' width='1272' height='712' rx='10' ry='10' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='white' mask='url(%23camHole)'/%3E%3C/svg%3E");
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3Cmask id='camHole'%3E%3Crect width='1920' height='1080' fill='white'/%3E%3Crect x='56' y='136' width='1272' height='712' rx='10' ry='10' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='white' mask='url(%23camHole)'/%3E%3C/svg%3E");
@@ -23,7 +23,7 @@
       mask-repeat: no-repeat;
     }
 
-    /* CabeÃ§alho Superior (X:52, Y:44, 1816x66) */
+    /* Cabeçalho Superior (X:52, Y:44, 1816x66) */
     .chat-header {
       position: absolute;
       left: 52px;
@@ -100,7 +100,7 @@
       background: transparent;
     }
 
-    /* CartÃ£o alternativo exibido quando mostrarWebcam = false */
+    /* Cartão alternativo exibido quando mostrarWebcam = false */
     .chat-nocam-card {
       position: absolute;
       inset: 0;
@@ -187,7 +187,7 @@
       color: var(--sunset-gold);
     }
 
-    /* Ãrea Ãºtil para encaixar o chat no OBS: X:1376, Y:196, 476x640 */
+    /* Área útil para encaixar o chat no OBS: X:1376, Y:196, 476x640 */
     .chat-panel__viewport {
       flex: 1;
       margin: 8px 16px 16px 16px;
@@ -262,17 +262,17 @@
 </head>
 <body>
   <main class="scene-root">
-    <!-- Fundo Miami Sunset Suavizado (com recorte transparente na Ã¡rea da webcam) -->
+    <!-- Fundo Miami Sunset Suavizado (com recorte transparente na área da webcam) -->
     <div id="chatBackdrop" class="sunset-backdrop sunset-backdrop--chat has-webcam-cutout">
       <div class="sunset-photo"></div>
       <div class="sunset-tint"></div>
       <div class="editorial-outer-frame"></div>
     </div>
 
-    <!-- CabeÃ§alho Superior -->
+    <!-- Cabeçalho Superior -->
     <header class="chat-header glass-bar">
       <div class="chat-header__left">
-        <span class="chat-header__badge" data-config="tituloChat">SÃ“ CHAT</span>
+        <span class="chat-header__badge" data-config="tituloChat">SÓ CHAT</span>
         <span class="chat-header__status" data-config="textoStatus"></span>
       </div>
 
@@ -289,8 +289,8 @@
     <section id="chatCamSlot" class="chat-cam-slot sunset-frame">
       <div class="chat-cam-inner">
         <div class="obs-guide">
-          ÃREA VAZADA DA WEBCAM (16:9 HD)
-          <span>COLOQUE A WEBCAM ATRÃS DA CENA â€¢ X: 52 â€¢ Y: 132 â€¢ 1280 Ã— 720 PX</span>
+          ÁREA VAZADA DA WEBCAM (16:9 HD)
+          <span>COLOQUE A WEBCAM ATRÁS DA CENA • X: 52 • Y: 132 • 1280 × 720 PX</span>
         </div>
 
         <div class="chat-nocam-card">
@@ -301,7 +301,7 @@
       </div>
     </section>
 
-    <!-- Lado Direito: Ãrea Delimitada e Estilizada para Chat do OBS -->
+    <!-- Lado Direito: Área Delimitada e Estilizada para Chat do OBS -->
     <aside class="chat-panel">
       <div class="chat-panel__header">
         <span class="chat-panel__title">
@@ -314,7 +314,7 @@
       <div class="chat-panel__viewport">
         <div class="obs-guide">
           JANELA DO CHAT OBS
-          <span>X: 1376 â€¢ Y: 196 â€¢ 476 Ã— 640 PX</span>
+          <span>X: 1376 • Y: 196 • 476 × 640 PX</span>
         </div>
       </div>
     </aside>
@@ -336,7 +336,7 @@
       </div>
     </footer>
 
-    <!-- Camadas 3D GTA 6 (NÃ­tida + Algema com Desfoque Depth-of-Field no Canto Inferior Direito) -->
+    <!-- Camadas 3D GTA 6 (Nítida + Algema com Desfoque Depth-of-Field no Canto Inferior Direito) -->
     <canvas id="scene3dCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:22;"></canvas>
     <canvas id="scene3dDofCanvas" style="position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:24;filter:blur(3.5px);"></canvas>
   </main>
@@ -382,19 +382,19 @@
         const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
         const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
 
-        // 1. MaÃ§o de $100 sobre a borda superior da webcam principal
+        // 1. Maço de $100 sobre a borda superior da webcam principal
         const cashTop = GTA6Engine.createCashStack({ envMap });
         cashTop.scale.set(1.18, 1.18, 1.18);
         cashTop.position.set(-0.95, 3.35, 1.4);
         scene.add(cashTop);
 
-        // 2. Pistola 3D no canto inferior esquerdo da moldura da webcam (acima da barra de rodapÃ©)
+        // 2. Pistola 3D no canto inferior esquerdo da moldura da webcam (acima da barra de rodapé)
         const pistolBL = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
         pistolBL.scale.set(0.76, 0.76, 0.76);
         pistolBL.position.set(-6.55, -2.05, 2.0);
         scene.add(pistolBL);
 
-        // 3. Algemas 3D com Depth-of-Field blur no canto inferior direito
+        // 3. Algemas 3D com Depth-of-Field blur no canto inferior direito (sem encostar no botão do TikTok @livesjorge)
         const dofCanvas = document.getElementById("scene3dDofCanvas");
         const dofRenderer = new THREE.WebGLRenderer({ canvas: dofCanvas, alpha: true, antialias: true });
         GTA6Engine.configureRenderer(dofRenderer);
@@ -402,8 +402,8 @@
         GTA6Engine.setupViceLighting(dofScene, "gold");
         const dofEnv = GTA6Engine.getStudioEnvMap(dofRenderer, "purple");
         const cuffsBR = GTA6Engine.createHandcuffs({ envMap: dofEnv });
-        cuffsBR.scale.set(1.25, 1.25, 1.25);
-        cuffsBR.position.set(6.25, -3.55, 2.2);
+        cuffsBR.scale.set(1.15, 1.15, 1.15);
+        cuffsBR.position.set(6.95, -3.75, 2.2);
         dofScene.add(cuffsBR);
 
         const clock = new THREE.Clock();
@@ -414,7 +414,7 @@
           cashTop.rotation.set(1.12 + Math.sin(t * 0.6) * 0.06, -0.25 + Math.cos(t * 0.5) * 0.08, -1.15);
           pistolBL.position.y = -2.05 + Math.cos(t * 1.0) * 0.08;
           pistolBL.rotation.set(0.25, 0.28 + Math.sin(t * 0.6) * 0.08, -0.52);
-          cuffsBR.position.y = -3.55 + Math.sin(t * 0.95 + 1.0) * 0.12;
+          cuffsBR.position.y = -3.75 + Math.sin(t * 0.95 + 1.0) * 0.12;
           cuffsBR.rotation.set(0.35, -0.45 + Math.cos(t * 0.5) * 0.1, 0.25);
           renderer.render(scene, camera);
           dofRenderer.render(dofScene, camera);

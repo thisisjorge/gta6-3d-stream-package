@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -200,7 +200,7 @@
     let currentAlertType = params.get('alertType') || 'donate'; // 'follow', 'sub', 'subgift', 'bits', 'donate', 'raid'
     const showTopIcons = params.get('icons') === '1' || mode === 'alert' || mode === 'showcase';
 
-    // Default presets for all 6 Alert Types (PT-BR & EN) â€” Customized for @apenasojorge
+    // Default presets for all 6 Alert Types (PT-BR & EN) — Customized for @apenasojorge
     const ALERT_PRESETS = {
       pt: {
         follow:  { user: 'LuciaVice',      action: 'SEGUE @APENASOJORGE!',   icon: 'user'    },
@@ -262,25 +262,13 @@
     const envMap = GTA6Engine.getStudioEnvMap(renderer, 'purple');
     const goldEnv = GTA6Engine.getStudioEnvMap(renderer, 'gold');
 
-    // 1. Top-Left Corner 3D Handcuffs on Facecam Border (Seamless, no protruding tail!)
-    const cornerCuffs = GTA6Engine.createHandcuffs({ envMap });
-    cornerCuffs.scale.set(0.28, 0.28, 0.28);
-    cornerCuffs.position.set(-3.32, 2.26, 1.5);
-    scene.add(cornerCuffs);
-
-    // 2. Top-Center Mini 3D Cash Stack on Facecam Top Border
-    const topCash = GTA6Engine.createCashStack({ envMap });
-    topCash.scale.set(0.18, 0.18, 0.18);
-    topCash.position.set(0.0, 2.34, 1.5);
-    scene.add(topCash);
-
-    // 3. Bottom-Right Corner 3D Pistol on Facecam Border
+    // Apenas a Pistola 3D no canto inferior direito da Facecam (sem os 6 ícones no topo nem algemas/maço!)
     const cornerPistol = GTA6Engine.createPistol({ variant: 'bronze', envMap: goldEnv });
     cornerPistol.scale.set(0.29, 0.29, 0.29);
     cornerPistol.position.set(3.36, -0.62, 1.8);
     scene.add(cornerPistol);
 
-    // 4. Bottom-Left Footer 3D Icons for EVERY Alert Type + Goal Modes!
+    // Ícones 3D do rodapé inferior esquerdo (Meta ou Tipo de Alerta)
     const footerIcons = {
       goalStar:   GTA6Engine.createStar3D({ outerRadius: 0.36, innerRadius: 0.15, depth: 0.13, envMap: goldEnv }),
       goalFollow: GTA6Engine.createAlertIcon3D('user', envMap),
@@ -301,26 +289,12 @@
       scene.add(mesh);
     });
 
-    // 5. Center Spinning 3D "J" Fiery Plasma Alert Orb for @apenasojorge (Visible during any active alert)
+    // Moeda 3D "J" em Chamas (Aparece no centro quando um alerta é disparado)
     const alertCoin = GTA6Engine.createAlertCoin3D(params.get('letter') || 'J', goldEnv);
     alertCoin.scale.set(0.92, 0.92, 0.92);
     alertCoin.position.set(0.0, 0.56, 1.8);
     scene.add(alertCoin);
 
-    // 6. Row of 6 Floating 3D Alert Icons Above Facecam (Gift, Diamond, Star, $, Bolt, User)
-    const iconTypes = ['gift', 'diamond', 'star', 'dollar', 'bolt', 'user'];
-    const topIcons = [];
-    iconTypes.forEach((type, idx) => {
-      const iconMesh = GTA6Engine.createAlertIcon3D(type, idx % 2 === 1 ? goldEnv : envMap);
-      iconMesh.scale.set(0.58, 0.58, 0.58);
-      const xPos = -3.35 + idx * 1.34;
-      iconMesh.position.set(xPos, 3.28, 1.5);
-      iconMesh.visible = showTopIcons;
-      scene.add(iconMesh);
-      topIcons.push(iconMesh);
-    });
-
-    // Public API to trigger ANY alert type live (Follow, Sub, Sub Gift, Bits, Donate/PIX, Raid)
     window.triggerGTA6Alert = function(type = 'donate', customUser, customAction) {
       applyAlertPreset(type, customUser, customAction);
       document.body.classList.add('alert-active');
@@ -330,7 +304,6 @@
       }, 6000);
     };
 
-    // Listen for postMessage from Master Control Hub so user can test alerts with 1 click
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'TRIGGER_ALERT') {
         window.triggerGTA6Alert(e.data.alertType, e.data.user, e.data.action);
@@ -343,11 +316,8 @@
       const t = clock.getElapsedTime();
       const isAlert = document.body.classList.contains('alert-active');
 
-      cornerCuffs.rotation.set(0.3, 0.25 + Math.sin(t * 1.2) * 0.12, 0.45);
-      topCash.rotation.set(0.75, Math.sin(t * 1.1) * 0.2, 0.25);
       cornerPistol.rotation.set(0.25, Math.PI + 0.2 + Math.cos(t * 1.1) * 0.1, 0.55);
 
-      // Show only the matching 3D icon in the bottom-left footer
       Object.values(footerIcons).forEach(m => { m.visible = false; });
       const activeFooterMesh = isAlert
         ? (footerIcons[currentAlertType] || footerIcons.donate)
@@ -361,17 +331,6 @@
         alertCoin.rotation.y = Math.sin(t * 1.6) * 0.42;
         alertCoin.position.y = 0.56 + Math.sin(t * 2.2) * 0.06;
       }
-
-      // Highlight the matching top floating 3D icon during an active alert
-      const activePreset = (ALERT_PRESETS[lang] || ALERT_PRESETS.pt)[currentAlertType] || ALERT_PRESETS.pt.donate;
-      topIcons.forEach((ic, idx) => {
-        if (!ic.visible) return;
-        const isCurrentType = isAlert && iconTypes[idx] === activePreset.icon;
-        const targetScale = isCurrentType ? 0.74 : 0.58;
-        ic.scale.setScalar(targetScale);
-        ic.position.y = 3.28 + Math.sin(t * 1.8 + idx * 0.7) * 0.08 + (isCurrentType ? 0.12 : 0);
-        ic.rotation.y = Math.sin(t * 1.2 + idx * 0.5) * 0.45;
-      });
 
       renderer.render(scene, camera);
     }

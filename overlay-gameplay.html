@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
-  <title>Overlay Gameplay 3D â€” Miami Sunset (@apenasojorge)</title>
+  <title>Overlay Gameplay 3D — Miami Sunset (@apenasojorge)</title>
   <link rel="stylesheet" href="theme.css" />
   <style>
     /* Fundo 100% transparente nativo para Browser Source do OBS Studio */
@@ -21,7 +21,7 @@
       z-index: 10;
     }
 
-    /* PosiÃ§Ãµes configurÃ¡veis via config.js -> webcamPosicao ou ?cam=... */
+    /* Posições configuráveis via config.js -> webcamPosicao ou ?cam=... */
     .gameplay-hud.pos-middle-left {
       left: 36px;
       top: 300px;
@@ -63,7 +63,7 @@
       bottom: 36px !important;
     }
 
-    /* Moldura Sunset Editorial 16:9 (Externa 424x242 | Interna Ãºtil 416x234) */
+    /* Moldura Sunset Editorial 16:9 (Externa 424x242 | Interna útil 416x234) */
     .webcam-frame {
       position: relative;
       width: 424px;
@@ -109,7 +109,7 @@
       display: block;
     }
 
-    /* Canvas 3D local acoplado Ã  moldura 16:9 da Webcam (Algemas 3D + Pistola 3D + Estrela 3D) */
+    /* Canvas 3D local acoplado à moldura 16:9 da Webcam (Algemas 3D + Pistola 3D + Estrela 3D) */
     .cam-3d-accents {
       position: absolute;
       left: -68px;
@@ -213,10 +213,10 @@
 </head>
 <body>
   <main class="scene-root">
-    <!-- Guia opcional para posicionar alertas (sÃ³ aparece se mostrarGuiasOBS: true) -->
+    <!-- Guia opcional para posicionar alertas (só aparece se mostrarGuiasOBS: true) -->
     <div class="alerts-safe-guide">
       ZONA DE ALERTAS 3D (STREAMELEMENTS / LIVEPIX)
-      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);">X: 550 â€¢ Y: 20 â€¢ 820 Ã— 270 PX</span>
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);">X: 550 • Y: 20 • 820 × 270 PX</span>
     </div>
 
     <!-- HUD de Gameplay Limpa (Webcam 16:9 com cantoneiras 3D + Barra @apenasojorge) -->
@@ -225,11 +225,11 @@
         <div class="webcam-aperture">
           <div class="obs-guide">
             WEBCAM 16:9
-            <span id="camCoordsHint">X: 40 â€¢ Y: 304 â€¢ 416 Ã— 234 PX</span>
+            <span id="camCoordsHint">X: 40 • Y: 304 • 416 × 234 PX</span>
           </div>
         </div>
         <img id="camPngSkin" class="cam-png-skin" src="assets/cam-frame-2.png" alt="" />
-        <!-- Efeitos 3D sutis nas quinas da cÃ¢mera (Algemas 3D + Pistola 3D + MaÃ§o $100) -->
+        <!-- Efeitos 3D sutis nas quinas da câmera (Algemas 3D + Pistola 3D + Maço $100) -->
         <canvas id="cam3dCanvas" class="cam-3d-accents" width="560" height="378"></canvas>
       </div>
 
@@ -304,12 +304,12 @@
       }
 
       const coordsMap = {
-        "middle-left":  "X: 40 â€¢ Y: 304 â€¢ 416 Ã— 234 PX",
-        "top-left":     "X: 40 â€¢ Y: 44 â€¢ 416 Ã— 234 PX",
-        "bottom-left":  "X: 40 â€¢ Y: 748 â€¢ 416 Ã— 234 PX",
-        "top-right":    "X: 1464 â€¢ Y: 44 â€¢ 416 Ã— 234 PX",
-        "middle-right": "X: 1464 â€¢ Y: 304 â€¢ 416 Ã— 234 PX",
-        "bottom-right": "X: 1464 â€¢ Y: 748 â€¢ 416 Ã— 234 PX"
+        "middle-left":  "X: 40 • Y: 304 • 416 × 234 PX",
+        "top-left":     "X: 40 • Y: 44 • 416 × 234 PX",
+        "bottom-left":  "X: 40 • Y: 748 • 416 × 234 PX",
+        "top-right":    "X: 1464 • Y: 44 • 416 × 234 PX",
+        "middle-right": "X: 1464 • Y: 304 • 416 × 234 PX",
+        "bottom-right": "X: 1464 • Y: 748 • 416 × 234 PX"
       };
 
       hud.className = "gameplay-hud pos-" + pos;
@@ -342,19 +342,7 @@
         const envMap = GTA6Engine.getStudioEnvMap(renderer, "purple");
         const goldEnv = GTA6Engine.getStudioEnvMap(renderer, "gold");
 
-        // 1. Mini Algema 3D no canto superior esquerdo da moldura 16:9
-        const cuffs = GTA6Engine.createHandcuffs({ envMap });
-        cuffs.scale.set(0.28, 0.28, 0.28);
-        cuffs.position.set(-3.12, 1.88, 0.5);
-        scene.add(cuffs);
-
-        // 2. Mini MaÃ§o de $100 no topo central da moldura
-        const cash = GTA6Engine.createCashStack({ envMap });
-        cash.scale.set(0.20, 0.20, 0.20);
-        cash.position.set(0.0, 2.02, 0.5);
-        scene.add(cash);
-
-        // 3. Mini Pistola Glock 3D Bronze/Gold no canto inferior direito da moldura
+        // Apenas a Pistola Glock 3D Bronze/Gold no canto inferior direito da moldura (limpo, sem algemas nem maço!)
         const pistol = GTA6Engine.createPistol({ variant: "bronze", envMap: goldEnv });
         pistol.scale.set(0.32, 0.32, 0.32);
         pistol.position.set(3.15, -1.65, 0.8);
@@ -364,8 +352,6 @@
         function animate3D() {
           requestAnimationFrame(animate3D);
           const t = clock.getElapsedTime();
-          cuffs.rotation.set(0.25, 0.2 + Math.sin(t * 1.2) * 0.14, 0.42);
-          cash.rotation.set(0.75, Math.sin(t * 1.1) * 0.22, 0.25);
           pistol.rotation.set(0.22, Math.PI + 0.22 + Math.cos(t * 1.15) * 0.12, 0.52);
           renderer.render(scene, camera);
         }

@@ -14,9 +14,16 @@ const existing = JSON.parse(fs.readFileSync(existingPath, 'utf8'));
 // Backup existing Sem_nome.json safely
 fs.copyFileSync(existingPath, path.join(OBS_SCENES_DIR, 'Sem_nome.backup-before-gta6.json'));
 
-// Reusable item builder for a scene
+// Reusable item builder for a scene (computes exact OBS pos_rel = (x - 960)/540, (y - 540)/540 so nothing ever shifts or crops!)
 let globalItemId = 1;
 function makeSceneItem(name, sourceUuid, opts = {}) {
+  const px = opts.x || 0.0;
+  const py = opts.y || 0.0;
+  const sx = opts.scaleX || 1.0;
+  const sy = opts.scaleY || 1.0;
+  const bx = opts.boundsX || 0.0;
+  const by = opts.boundsY || 0.0;
+
   return {
     name,
     source_uuid: sourceUuid,
@@ -34,12 +41,18 @@ function makeSceneItem(name, sourceUuid, opts = {}) {
     crop_bottom: 0,
     id: globalItemId++,
     group_item_backup: false,
-    pos: { x: opts.x || 0.0, y: opts.y || 0.0 },
-    pos_rel: { x: 0.0, y: 0.0 },
-    scale: { x: opts.scaleX || 1.0, y: opts.scaleY || 1.0 },
-    scale_rel: { x: 1.0, y: 1.0 },
-    bounds: { x: opts.boundsX || 0.0, y: opts.boundsY || 0.0 },
-    bounds_rel: { x: 0.0, y: 0.0 },
+    pos: { x: px, y: py },
+    pos_rel: {
+      x: (px - 960.0) / 540.0,
+      y: (py - 540.0) / 540.0
+    },
+    scale: { x: sx, y: sy },
+    scale_rel: { x: sx, y: sy },
+    bounds: { x: bx, y: by },
+    bounds_rel: {
+      x: bx / 540.0,
+      y: by / 540.0
+    },
     scale_filter: 'disable',
     blend_method: 'default',
     blend_type: 'normal',
@@ -200,7 +213,7 @@ const LIVEPIX_WIDGET_URL = 'https://widget.livepix.gg/embed/bba99ac8-999e-4bf3-8
 const bsAlerts   = makeBrowserSource('alerts', `${ROOT}/preview-alertas.html`, 820, 270, true, true);
 const bsLivePix  = makeBrowserSource('livepix', LIVEPIX_WIDGET_URL, 820, 270, false, true);
 bsLivePix.settings.css = livePixCustomCss;
-const bsChatBox  = makeBrowserSource('chat', `${ROOT}/scenes/07-chat-widget.html`, 680, 320, true, false);
+const bsChatBox  = makeBrowserSource('chat', `${ROOT}/scenes/07-chat-widget.html`, 476, 640, true, false);
 const bsStinger  = makeBrowserSource('Transição Stinger (@apenasojorge)', `${ROOT}/transicao.html?manual=1`, 1920, 1080, true, false);
 
 // 3. Build the 8 Scenes from Friend's OBS Screenshot:
@@ -254,12 +267,12 @@ const sceneSoChat = makeScene('Só Chat', [
     boundsY: 720
   }),
   makeSceneItem(bsChat.name, bsChat.uuid, { locked: true }),
-  makeSceneItem(bsChatBox.name, bsChatBox.uuid, { x: 1376, y: 196, scaleX: 0.7, scaleY: 0.7, locked: true }),
+  makeSceneItem(bsChatBox.name, bsChatBox.uuid, { x: 1376, y: 196, scaleX: 1.0, scaleY: 1.0, locked: true }),
   makeSceneItem(bsAlerts.name, bsAlerts.uuid, { x: 550, y: 20, locked: true }),
   makeSceneItem(bsLivePix.name, bsLivePix.uuid, { x: 550, y: 20, locked: true })
 ]);
 
-// Scene 3: Gameplay (Monitor + Game Capture + Webcam 416x234 at X:40, Y:304 + Overlay Gameplay 3D + Chat + Alerts + LivePix)
+// Scene 3: Gameplay (Monitor + Game Capture + Webcam 416x234 at X:40, Y:304 + Overlay Gameplay 3D + Chat ABOVE Cam + Alerts + LivePix)
 const sceneGameplay = makeScene('Gameplay', [
   makeSceneItem(monitorSource.name, monitorSource.uuid, { locked: true }),
   makeSceneItem(gameCaptureSource.name, gameCaptureSource.uuid, { locked: true }),
@@ -271,7 +284,7 @@ const sceneGameplay = makeScene('Gameplay', [
     boundsY: 234
   }),
   makeSceneItem(bsGameplay.name, bsGameplay.uuid, { locked: true }),
-  makeSceneItem(bsChatBox.name, bsChatBox.uuid, { x: 36, y: 615, scaleX: 0.62, scaleY: 0.62, locked: true }),
+  makeSceneItem(bsChatBox.name, bsChatBox.uuid, { x: 36, y: 32, scaleX: 0.89, scaleY: 0.38, locked: true }),
   makeSceneItem(bsAlerts.name, bsAlerts.uuid, { x: 550, y: 20, locked: true }),
   makeSceneItem(bsLivePix.name, bsLivePix.uuid, { x: 550, y: 20, locked: true }),
   makeSceneItem(bsMissao.name, bsMissao.uuid, { visible: false, locked: false })

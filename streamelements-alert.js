@@ -572,6 +572,83 @@
   });
 
   // --------------------------------------------------------------------------
+  // CONEXÃO DIRETA COM TWITCH IRC (@apenasojorge) — DISPARA SUB, GIFT SUB,
+  // BITS E RAID AUTOMATICAMENTE MESMO SEM STREAMELEMENTS!
+  // --------------------------------------------------------------------------
+  (function connectTwitchLiveAlerts() {
+    try {
+      const channel = "apenasojorge";
+      const ws = new WebSocket("wss://irc-ws.chat.twitch.tv:443");
+      ws.onopen = function () {
+        ws.send("CAP REQ :twitch.tv/tags twitch.tv/commands");
+        ws.send("PASS SCHMOOPIIE");
+        ws.send("NICK justinfan" + Math.floor(10000 + Math.random() * 89999));
+        ws.send("JOIN #" + channel);
+      };
+      ws.onmessage = function (e) {
+        const lines = String(e.data || "").split("\r\n");
+        for (const line of lines) {
+          if (!line) continue;
+          if (line.startsWith("PING")) {
+            ws.send("PONG :tmi.twitch.tv");
+            continue;
+          }
+          // Detecta Bits (cheer) no chat da Twitch
+          if (line.includes("PRIVMSG #" + channel) && line.includes("bits=")) {
+            const bitsMatch = line.match(/bits=(\d+)/);
+            const nameMatch = line.match(/display-name=([^;]+)/);
+            const msgPart = line.split("PRIVMSG #" + channel + " :")[1] || "";
+            if (bitsMatch) {
+              const payload = parseStreamElementsEvent("cheer-latest", {
+                name: (nameMatch && nameMatch[1]) || "Viewer",
+                amount: Number(bitsMatch[1]),
+                message: msgPart
+              });
+              if (payload) enqueueAlert(payload);
+            }
+          }
+          // Detecta Sub, Resub, SubGift e Raid via USERNOTICE da Twitch
+          if (line.includes("USERNOTICE #" + channel)) {
+            const msgIdMatch = line.match(/msg-id=([^;]+)/);
+            const nameMatch = line.match(/display-name=([^;]+)/);
+            const msgId = msgIdMatch ? msgIdMatch[1] : "";
+            const user = (nameMatch && nameMatch[1]) || "Viewer";
+
+            if (msgId === "sub" || msgId === "resub") {
+              const monthsMatch = line.match(/msg-param-cumulative-months=(\d+)/);
+              const payload = parseStreamElementsEvent("subscriber-latest", {
+                name: user,
+                amount: monthsMatch ? Number(monthsMatch[1]) : 1
+              });
+              if (payload) enqueueAlert(payload);
+            } else if (msgId === "subgift" || msgId === "submysterygift") {
+              const countMatch = line.match(/msg-param-mass-gift-count=(\d+)/);
+              const payload = parseStreamElementsEvent("subscriber-latest", {
+                sender: user,
+                name: "Chat",
+                amount: countMatch ? Number(countMatch[1]) : 1,
+                bulkGifted: true,
+                gifted: true
+              });
+              if (payload) enqueueAlert(payload);
+            } else if (msgId === "raid") {
+              const viewersMatch = line.match(/msg-param-viewerCount=(\d+)/);
+              const payload = parseStreamElementsEvent("raid-latest", {
+                name: user,
+                amount: viewersMatch ? Number(viewersMatch[1]) : 10
+              });
+              if (payload) enqueueAlert(payload);
+            }
+          }
+        }
+      };
+      ws.onclose = function () {
+        setTimeout(connectTwitchLiveAlerts, 4000);
+      };
+    } catch (_) {}
+  })();
+
+  // --------------------------------------------------------------------------
   // FUNÇÃO DE TESTE RÁPIDO (CONSOLE OU PREVIEW.HTML)
   // --------------------------------------------------------------------------
   window.simularAlerta = function (tipo = "tip", customAmount) {

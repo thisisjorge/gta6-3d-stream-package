@@ -54,42 +54,42 @@ const SCENES = [
   },
   {
     id: '06b-facecam-alert-donation',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=donate&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=donate&lang=pt',
     alpha: true
   },
   {
     id: '06c-facecam-alert-follow',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=follow&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=follow&lang=pt',
     alpha: true
   },
   {
     id: '06d-facecam-alert-sub',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=sub&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=sub&lang=pt',
     alpha: true
   },
   {
     id: '06e-facecam-alert-subgift',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=subgift&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=subgift&lang=pt',
     alpha: true
   },
   {
     id: '06f-facecam-alert-raid',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=raid&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=raid&lang=pt',
     alpha: true
   },
   {
     id: '06g-facecam-alert-bits',
-    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=bits&icons=1&lang=pt',
+    file: 'scenes/06-facecam-alerts-widget.html?mode=alert&alertType=bits&lang=pt',
     alpha: true
   },
   {
     id: '07-chat-widget',
-    file: 'scenes/07-chat-widget.html?lang=pt',
+    file: 'scenes/07-chat-widget.html?demo=1&lang=pt',
     alpha: true
   },
   {
     id: '08-gameplay-live-hud',
-    file: 'scenes/08-gameplay-live-hud.html?transparent=0&mode=alert&alertType=follow&lang=pt',
+    file: 'scenes/08-gameplay-live-hud.html?transparent=0&mode=subgoal&goal=follows&lang=pt',
     alpha: true
   }
 ];

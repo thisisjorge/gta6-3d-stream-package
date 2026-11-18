@@ -263,7 +263,7 @@
     function testAlert(alertType) {
       // If user is not currently on Facecam or HUD scene, switch to Facecam + Alerts automatically
       if (!currentBaseScene.includes('06-facecam') && !currentBaseScene.includes('08-gameplay')) {
-        currentBaseScene = `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&icons=1`;
+        currentBaseScene = `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}`;
         document.querySelectorAll('.toolbar .tab-btn').forEach(b => b.classList.remove('active'));
         updateIframe();
         return;
@@ -275,7 +275,7 @@
       }
       const sep = currentBaseScene.includes('?') ? '&' : '?';
       document.getElementById('scene-url').textContent =
-        `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&icons=1&lang=${currentLang}`;
+        `scenes/06-facecam-alerts-widget.html?mode=alert&alertType=${alertType}&lang=${currentLang}`;
     }
 
     function setLanguage(lang) {
