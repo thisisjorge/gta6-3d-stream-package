@@ -215,20 +215,44 @@
     }
 
     .brand-emblem {
-      min-width: 64px;
-      height: 64px;
-      padding: 0 16px;
-      border-radius: 14px;
+      width: 68px;
+      height: 68px;
+      padding: 2px;
+      border-radius: 50%;
       background: var(--grad-sunset);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-display);
-      font-size: 25px;
-      font-weight: 900;
-      color: #1a0d2e;
-      box-shadow: 0 10px 24px rgba(232, 104, 120, 0.28);
+      box-shadow: 0 10px 26px rgba(232, 104, 120, 0.34), 0 0 18px rgba(139, 92, 246, 0.36);
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .brand-emblem__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nocam-avatar {
+      width: 96px;
+      height: 96px;
+      padding: 3px;
+      border-radius: 50%;
+      background: var(--grad-sunset);
+      box-shadow: 0 14px 36px rgba(232, 104, 120, 0.38);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .nocam-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand-copy {
@@ -294,8 +318,8 @@
         </div>
 
         <div class="chat-nocam-card">
-          <div class="nocam-sun" data-config="iniciaisEmblema">G</div>
-          <h2 class="nocam-title title-editorial" data-config="arroba">@yGabsxw</h2>
+          <div class="nocam-avatar"><img id="nocamAvatarImg" src="assets/avatar-jorge.png" alt="@apenasojorge" /></div>
+          <h2 class="nocam-title title-editorial" data-config="arroba">@apenasojorge</h2>
           <p class="nocam-desc" data-config="subtituloChat">Conversando com o chat</p>
         </div>
       </div>
@@ -322,7 +346,7 @@
     <!-- Barra Inferior -->
     <footer class="chat-footer glass-bar">
       <div class="chat-footer__identity">
-        <div class="brand-emblem" data-config="iniciaisEmblema">J</div>
+        <div class="brand-emblem"><img id="brandAvatarImg" class="brand-emblem__img" src="assets/avatar-jorge.png" alt="@apenasojorge" /></div>
         <div class="brand-copy">
           <span class="brand-name" data-config="arroba">@apenasojorge</span>
           <span class="brand-sub" data-config="subtituloChat">Conversando com o chat</span>

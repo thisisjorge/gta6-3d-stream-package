@@ -11,6 +11,7 @@ window.STREAM_CONFIG = {
   nomeExibicao: "apenasojorge",
   arroba: "@apenasojorge",
   iniciaisEmblema: "J", // Emblema 3D e crachá da cena Só Chat / Transição Stinger
+  avatarUrl: "assets/avatar-jorge.png", // Avatar pixel-art oficial do Jorge
   tagLive: "AO VIVO",
 
   // 2. CONTROLE GLOBAL DA WEBCAM E EFEITOS 3D
